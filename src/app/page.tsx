@@ -1,3 +1,7 @@
 export default function HomePage() {
-  return <h1 className="text-3xl">HandMade Shop</h1>;
+  return (
+    <div>
+      <h1 className="">HandMade Shop</h1>
+    </div>
+  );
 }
