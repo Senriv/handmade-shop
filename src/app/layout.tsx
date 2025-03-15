@@ -4,6 +4,9 @@ import "./ui/globals.css";
 export const metadata: Metadata = {
   title: "HandMade Shop",
   description: "HandMade Shop",
+  icons: {
+    icon: "favicon.svg",
+  },
 };
 
 export default function RootLayout({
