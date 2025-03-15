@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./ui/globals.css";
 
+import ClientProvider from "@/components/ClientProvider";
+
 export const metadata: Metadata = {
   title: "HandMade Shop",
   description: "HandMade Shop",
@@ -16,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={``}>{children}</body>
+      <body>
+        <ClientProvider>{children}</ClientProvider>
+      </body>
     </html>
   );
 }
