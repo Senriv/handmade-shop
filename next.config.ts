@@ -5,6 +5,17 @@ const withImages = require("next-images");
 
 const nextConfig: NextConfig = withImages({
   reactStrictMode: true,
+
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/shop",
+        permanent: true,
+      },
+    ];
+  },
+
   webpack(config: Configuration) {
     if (!config.module) {
       config.module = { rules: [] };
