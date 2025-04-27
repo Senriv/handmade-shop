@@ -5,15 +5,5 @@ interface ContainerProps {
 }
 
 export const Container = ({ children }: ContainerProps) => {
-  return (
-    <div
-      style={{
-        padding: "0 90px",
-        margin: "0 auto",
-        maxWidth: "1440px",
-      }}
-    >
-      {children}
-    </div>
-  );
+  return <div className="max-w-[1440px] mx-auto px-[90px]">{children}</div>;
 };
