@@ -1,3 +1,4 @@
+import { Container } from "@/components/Container";
 import HeaderMain from "@/components/HeaderMain";
 import FooterMain from "@/components/FooterMain";
 
@@ -7,10 +8,10 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <Container>
       <HeaderMain />
       <main>{children}</main>
       <FooterMain />
-    </div>
+    </Container>
   );
 }
