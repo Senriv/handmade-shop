@@ -17,7 +17,7 @@ export default function HeaderMain() {
   ];
 
   return (
-    <header className="pt-[30px] ">
+    <header className="mt-[30px] ">
       <div className="flex flex-row justify-between">
         <nav className="flex items-center">
           <ul className="flex flex-row gap-4">
