@@ -10,7 +10,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {},
+      colors: {
+        "text-main": "#3d3d3d",
+        "accent-main": "#37cece",
+
+        "accent-bg": "rgba(55, 206, 206, 0.1)",
+      },
     },
   },
   plugins: [],
