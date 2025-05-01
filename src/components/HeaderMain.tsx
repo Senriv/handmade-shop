@@ -22,14 +22,14 @@ export default function HeaderMain() {
         <nav className="flex items-center">
           <ul className="flex flex-row gap-4">
             {navLinks.map(({ href, label }) => (
-              <li key={href} className="relative pb-2">
+              <li key={href} className="relative ">
                 <Link
                   href={href}
                   className={`${pathname === href ? "font-bold" : ""} relative`}
                 >
                   {label}
                   {pathname === href && (
-                    <span className="absolute left-0 bottom-[-33px] w-full h-[3px] bg-accent-main"></span>
+                    <span className="absolute left-0 bottom-[-29px] w-full h-[3px] bg-accent-main"></span>
                   )}
                 </Link>
               </li>
@@ -38,7 +38,12 @@ export default function HeaderMain() {
         </nav>
         <div className="flex flex-row gap-2 items-center">
           <h2 className="text-[18px] font-semibold">Crafted</h2>
-          <Image src="/favicon.svg" alt="logo" width={45} height={43} />
+          <Image
+            src="/Crafted_Treasure_Logo.png"
+            alt="logo"
+            width={45}
+            height={43}
+          />
           <h2 className="text-[18px] font-semibold">Treasures</h2>
         </div>
         <div className="flex flex-row gap-3 items-center">
