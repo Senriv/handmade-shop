@@ -35,3 +35,21 @@ body {
   font-family: "Segoe UI", sans-serif;
   color: #3d3d3d;
 }
+
+/* Swiper */
+.swiper-pagination-bullet.custom-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #37cece;
+  display: inline-block;
+  margin: 0 4px;
+  border-radius: 999999px;
+  opacity: 0.1;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.custom-bullet.swiper-pagination-bullet-active {
+  background-color: #37cece;
+  opacity: 1;
+}

@@ -15,6 +15,7 @@ const config: Config = {
         accentMain: "#37cece",
         mint: "#ecfbfb",
         lightGray: "#acacac",
+        mediumGray: "#727272",
 
         accentBg: "rgba(55, 206, 206, 0.1)",
       },
