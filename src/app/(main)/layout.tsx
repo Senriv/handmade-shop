@@ -8,10 +8,12 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <Container>
+    <>
       <HeaderMain />
-      <main>{children}</main>
+      <main>
+        <Container>{children}</Container>
+      </main>
       <FooterMain />
-    </Container>
+    </>
   );
 }

@@ -11,10 +11,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "text-main": "#3d3d3d",
-        "accent-main": "#37cece",
+        textMain: "#3d3d3d",
+        accentMain: "#37cece",
+        mint: "#ecfbfb",
+        lightGray: "#acacac",
 
-        "accent-bg": "rgba(55, 206, 206, 0.1)",
+        accentBg: "rgba(55, 206, 206, 0.1)",
       },
     },
   },
