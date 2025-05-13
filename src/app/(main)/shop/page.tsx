@@ -11,7 +11,6 @@ export default function ShopPage() {
   const [catalog, setCatalog] = useState<CatalogType>("all");
 
   const [items, setItems] = useState([]);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -33,15 +32,19 @@ export default function ShopPage() {
 
         const data = await response.json();
         setItems(data);
-      } catch (err: any) {
-        setError(err.message);
+      } catch (error) {
+        if (error instanceof Error) {
+          console.error("Fetch error:", error.message);
+        } else {
+          console.error("Unknown error", error);
+        }
       }
     };
 
     fetchItems();
   }, []);
 
-  console.log(items);
+  console.log("Тут должен появиться массив при удачном запросе:", items);
 
   return (
     <>
