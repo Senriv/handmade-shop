@@ -19,10 +19,6 @@ export default function ShopPage() {
           "http://185.161.208.160:8081/api/get/items",
           {
             method: "GET",
-            headers: {
-              Authorization: "Basic " + btoa("admin:Admin123"),
-              "Content-Type": "application/json",
-            },
           }
         );
 
