@@ -19,10 +19,12 @@ export default function HeaderMain() {
     { href: "/contact-us", label: "Contact us" },
   ];
 
+  const test = "privet";
+
   return (
     <header className="mt-[30px] ">
       <Container>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between ">
           <nav className="flex items-center">
             <ul className="flex flex-row gap-4">
               {navLinks.map(({ href, label }) => (
@@ -33,7 +35,7 @@ export default function HeaderMain() {
                       pathname === href ? "font-bold" : ""
                     } relative`}
                   >
-                    {label}
+                    {label + test}
                     {pathname === href && (
                       <span className="absolute left-0 bottom-[-29px] w-full h-[3px] bg-accentMain"></span>
                     )}
