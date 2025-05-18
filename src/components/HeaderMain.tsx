@@ -19,7 +19,7 @@ export default function HeaderMain() {
     { href: "/contact-us", label: "Contact us" },
   ];
 
-  const test = "privet";
+  const test = "privet ";
 
   return (
     <header className="mt-[30px] ">
