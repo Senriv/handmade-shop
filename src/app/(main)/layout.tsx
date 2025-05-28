@@ -13,7 +13,7 @@ export default function MainLayout({
       <main>
         <Container>{children}</Container>
       </main>
-      {/* <FooterMain /> */}
+      <FooterMain />
     </>
   );
 }
