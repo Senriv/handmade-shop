@@ -11,7 +11,7 @@ import FacebookBigSVG from "@/assets/footer-icons/facebookBig.svg";
 
 export default function FooterMain() {
   return (
-    <footer className="bg-mint">
+   <footer className="bg-mint">
       <Container>
         <div className="block sm:hidden">
           <div className="pt-[13px] ">
