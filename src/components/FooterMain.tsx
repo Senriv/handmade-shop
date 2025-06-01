@@ -11,7 +11,7 @@ import FacebookBigSVG from "@/assets/footer-icons/facebookBig.svg";
 
 export default function FooterMain() {
   return (
-    <footer className="bg-mint">
+   <footer className="bg-mint">
       <Container>
         <div className="block sm:hidden">
           <div className="pt-[13px] ">
@@ -151,7 +151,8 @@ export default function FooterMain() {
                   </button>
                 </div>
               </div>
-              {/* social mediA */}
+
+              {/* social media */}
               <div className="hidden md:flex md:gap-4 md:mt-[26px]">
                 <InstagramBigSVG />
                 <FacebookBigSVG />
