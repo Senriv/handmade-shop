@@ -151,6 +151,7 @@ export default function FooterMain() {
                   </button>
                 </div>
               </div>
+
               {/* social media */}
               <div className="hidden md:flex md:gap-4 md:mt-[26px]">
                 <InstagramBigSVG />
