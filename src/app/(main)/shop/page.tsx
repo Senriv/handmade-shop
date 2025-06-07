@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import HeroSlider from "@/components/shop/HeroSlider";
 
 export default function ShopPage() {
@@ -39,6 +40,11 @@ export default function ShopPage() {
   return (
     <>
       <HeroSlider />
+      <Link href="/shop/r8KlsnF93JdWqmXz4aTp7HcB">
+        <div className="p-3 hover:bg-mediumGray ">
+          Click me and You&apos;ll see the magic
+        </div>
+      </Link>
     </>
   );
 }
