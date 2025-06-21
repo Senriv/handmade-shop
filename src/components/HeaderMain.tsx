@@ -2,8 +2,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { useClickOutside } from "@/hooks/clickOutside";
 
 import { Container } from "@/components/Container";
 import { BurgerSvg } from "./base/BurgerSvg";
@@ -13,19 +14,18 @@ import GroceryCartSVG from "@/assets/header-icons/grocery_cart.svg";
 export default function HeaderMain() {
   const pathname = usePathname();
 
-  // states for mobile view
+  //  burger menu
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+
+  // search
   const mobileSearchRef = useRef<HTMLDivElement | null>(null);
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
-
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-  const [isActive, setIsActive] = useState<boolean>(false);
+  const [isInputFocused, setIsInputFocused] = useState(false);
   const [searchValue, setSearchValue] = useState<string>("");
 
-  console.log(
-    "Для QA: ^_^ когда мы что-то пишем в инпут оно тут сохраяенться, считай инпут рабочий:",
-    searchValue
-  );
+  //  logo hover
+  const [isActive, setIsActive] = useState<boolean>(false);
 
   const navLinks = [
     { href: "/shop", label: "Shop" },
@@ -43,48 +43,28 @@ export default function HeaderMain() {
 
   const handleBlur = () => setWidth(99);
 
-  // close burger menu, press somewhere else
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(event.target as Node)
-      ) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
-    if (isMobileMenuOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
+  useClickOutside(mobileSearchRef, () => {
+    if (isMobileSearchOpen) {
+      setIsMobileSearchOpen(false);
     }
+  });
 
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isMobileMenuOpen]);
+  useClickOutside(mobileMenuRef, () => {
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+    }
+  });
 
-  // close mobile input if pressed somwhere else
-  useEffect(() => {
-    if (!isMobileSearchOpen) return;
-
-    const handleClickOutsideInput = (event: MouseEvent) => {
-      if (
-        mobileSearchRef.current &&
-        !mobileSearchRef.current.contains(event.target as Node)
-      ) {
-        setIsMobileSearchOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutsideInput);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutsideInput);
-    };
-  }, [isMobileSearchOpen]);
+  const handleInputValueSearch = () => {
+    console.log(
+      `Полетел запрос: "${searchValue}". Так-же потом он чистится и закрывается.`
+    );
+    setSearchValue("");
+    setIsMobileSearchOpen(false);
+  };
 
   return (
-    <header className="relative xs:mt-[9px] sm:mt-[55px] md:mt-[30px]">
+    <header className="relative xs:mt-[20px] sm:mt-[55px] md:mt-[33px]">
       <Container>
         {/* header's left side */}
         <div className="relative flex items-center">
@@ -95,7 +75,7 @@ export default function HeaderMain() {
               className="block group sm:hidden hover:fill-red"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              <BurgerSvg className="w-6 h-6  fill-accentMain group-hover:opacity-100 transition-opacity duration-200" />
+              <BurgerSvg className="w-8 h-8  fill-accentMain group-hover:opacity-100 transition-opacity duration-200" />
             </button>
 
             {/* tablet/desktop nav */}
@@ -132,8 +112,10 @@ export default function HeaderMain() {
               onTouchStart={() => setIsActive(true)}
               onTouchEnd={() => setIsActive(false)}
             >
-              <h2 className="text-[15px] sm:text-[18px] font-bold">Crafted</h2>
-              <div className="relative w-[38px] h-[37px] sm:w-[45px] sm:h-[43px]">
+              <h2 className="text-[15px] sm:text-[18px] font-semibold">
+                Crafted
+              </h2>
+              <div className="relative w-[38px] h-[37px] sm:w-[48px] sm:h-[46px] md">
                 <Image
                   src="/Crafted_Treasure_Logo.png"
                   alt="logo"
@@ -141,14 +123,14 @@ export default function HeaderMain() {
                   className="object-contain"
                 />
               </div>
-              <h2 className="text-[15px] sm:text-[18px] font-bold">
+              <h2 className="text-[15px] sm:text-[18px] font-semibold">
                 Treasures
               </h2>
             </div>
           </div>
 
           {/* header's right part */}
-          <div className="flex-1 flex justify-end gap-3 sm:gap-6 items-center">
+          <div className="flex-1 flex justify-end gap-[20px] sm:gap-3 items-center">
             <div className="flex items-center gap-3">
               {/* Desktop Search Input */}
               <div className="hidden sm:flex items-center h-[32px] relative min-w-0">
@@ -163,9 +145,15 @@ export default function HeaderMain() {
                     onBlur={handleBlur}
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
-                    className="w-full h-[32px] box-border border border-accentMain bg-accentBg rounded-[6px] px-2 pr-8 text-sm leading-none outline-none placeholder:text-placeholderPrimary"
+                    className="w-full h-[32px] box-border border border-accentMain  rounded-[6px] px-2 pr-8 text-sm leading-none outline-none placeholder:text-placeholderPrimary"
                   />
-                  <SearchSVG className="absolute right-[10px] top-[8px] z-20" />
+                  <button
+                    type="button"
+                    className="absolute right-[10px] top-[5px] z-20"
+                    onClick={handleInputValueSearch}
+                  >
+                    <SearchSVG />
+                  </button>
                 </div>
               </div>
 
@@ -193,7 +181,7 @@ export default function HeaderMain() {
             >
               <nav
                 ref={mobileMenuRef}
-                className="absolute top-11 left-0 w-full bg-white p-[10px] z-50 rounded-xl border border-accentMain"
+                className="absolute top-[60px] left-0 w-full bg-white p-[10px] z-50 rounded-xl border border-accentMain"
                 onClick={(e) => e.stopPropagation()}
               >
                 <ul className="flex flex-col">
@@ -228,10 +216,21 @@ export default function HeaderMain() {
             type="text"
             placeholder="Search"
             value={searchValue}
+            onFocus={() => setIsInputFocused(true)}
+            onBlur={() => setIsInputFocused(false)}
             onChange={(e) => setSearchValue(e.target.value)}
-            className="w-full h-[32px]  bg-accentBg rounded-[6px] px-2 pr-8 text-sm leading-none outline-none placeholder:text-placeholderPrimary"
+            className={`w-full h-[34px] rounded-[6px] px-2 pr-8 text-sm placeholder:text-placeholderPrimary outline-none
+    border
+    ${isInputFocused ? "border-accentMain " : "border-accentMainActive "}
+  `}
           />
-          <SearchSVG className="absolute right-[28px] top-[8px] z-20" />
+          <button
+            type="button"
+            className="absolute right-[28px] top-[5px] z-20"
+            onClick={handleInputValueSearch}
+          >
+            <SearchSVG />
+          </button>
         </div>
       )}
     </header>
