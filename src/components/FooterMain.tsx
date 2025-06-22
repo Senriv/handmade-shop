@@ -1,72 +1,124 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
+import { useState } from "react";
 import { Container } from "./Container";
 
-import LogoSVG from "@/assets/footer-icons/footer-logo.svg";
-import LogoBigSVG from "@/assets/footer-icons/footer_logo_big.svg";
 import InstagramSVG from "@/assets/footer-icons/instagram.svg";
 import InstagramBigSVG from "@/assets/footer-icons/instagramBig.svg";
 import FacebookSVG from "@/assets/footer-icons/facebook.svg";
 import FacebookBigSVG from "@/assets/footer-icons/facebookBig.svg";
+import ErrorSVG from "@/assets/footer-icons/error_close.svg";
 
 export default function FooterMain() {
+  const [email, setEmail] = useState<string>("");
+  const [error, setError] = useState<boolean>(false);
+
+  const handleJoin = () => {
+    if (!email) {
+      setError(true);
+    } else if (!email.includes("@")) {
+      setError(true);
+    } else {
+      setError(false);
+      console.log("Subscribed with:", email);
+    }
+  };
+
+  const handleResetEmailField = () => {
+    setEmail("");
+    setError(false);
+  };
+
   return (
-   <footer className="bg-mint">
+    <footer className="bg-mint">
       <Container>
+        {/* mobile view */}
         <div className="block sm:hidden">
-          <div className="pt-[13px] ">
+          <div className="pt-6 flex flex-col">
             {/* join us */}
-            <div className="w-full flex flex-col gap-[18px] mb-[18px] ">
-              <h1 className="text-[18px] font-bold ">
+            <div className="max-w-[358px] flex flex-col  mb-[14px] ">
+              <h1 className="text-[18px] font-bold mb-[14px]">
                 Pssst... Want the good stuff first?
               </h1>
 
-              <div className="flex h-10 w-full ">
+              <div className="flex h-10 w-full relative">
                 <input
-                  className="outline-none py-3 px-4 text-[14px] flex-grow border border-accentMain border-r-0 rounded-l-[6px]"
+                  className={`outline-none py-3 px-4 text-[14px] flex-grow border border-r-0 rounded-l-[6px] ${
+                    error ? "border-error" : "border-accentMain"
+                  }`}
                   id="email"
                   type="email"
                   placeholder="email@gmail.com "
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <button
-                  className="text-white text-[18px] font-bold leading-[0.88] py-3 pl-[22px] pr-[27px] bg-accentMain rounded-r-[6px]"
+                  className={`text-white text-[18px] font-bold leading-[0.88] py-3 pl-[22px] pr-[27px] ${
+                    error ? "bg-lightGray cursor-not-allowed" : "bg-accentMain"
+                  } rounded-r-[6px]`}
                   type="button"
+                  onClick={handleJoin}
                 >
                   Join
                 </button>
+                <div className="absolute right-[90px] top-1/2 -translate-y-1/2 w-6 h-6 flex items-center justify-center">
+                  {error && (
+                    <button type="button" onClick={handleResetEmailField}>
+                      <ErrorSVG />
+                    </button>
+                  )}
+                </div>
               </div>
+
+              <p
+                className={`ml-2 mt-1 text-[10px] transition-opacity duration-200 ${
+                  error ? "text-error opacity-100" : "opacity-0"
+                }`}
+              >
+                *Please enter a valid email address
+              </p>
             </div>
 
             {/* 4 coloums  */}
-            <ul className="flex flex-row  w-full mb-4">
+            <ul className="flex flex-row justify-between w-full ">
               {/* categories */}
-              <li className="mr-[4px] ">
+              <li className="">
                 <ul>
                   <li>
                     <p className="text-[18px] font-bold ">Categories</p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-4">Jewelry</p>
+                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                      Jewelry
+                    </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-4">Knitted Items</p>
+                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                      Knitted Items
+                    </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-4">Candles</p>
+                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                      Candles
+                    </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-4">Gift Sets</p>
+                    <p className="text-[14px] leading-[1.29]hover:text-accentMain">
+                      Gift Sets
+                    </p>
                   </li>
                 </ul>
               </li>
-              {/* social media */}
-              <li className="flex  flex-row gap-2 items-end mr-[12px]">
-                <InstagramSVG />
-                <FacebookSVG />
-              </li>
               {/* logo */}
-              <li className="flex flex-col items-center group mr-auto hover:text-accentMain active:text-accentMainActive ">
-                <LogoSVG />
+              <li className="flex flex-col items-center group  hover:text-accentMain active:text-accentMainActive ">
+                <Image
+                  src="/logo/Crafted_Tresaures.png"
+                  alt="logo"
+                  width={70}
+                  height={67}
+                />
                 <h2 className="text-[11px] font-bold">Crafted</h2>
                 <h3 className="text-[7px]">-Treasures-</h3>
               </li>
@@ -74,16 +126,22 @@ export default function FooterMain() {
               <li>
                 <ul className="flex flex-col ">
                   <li>
-                    <p className="text-[18px] font-bold ">Information</p>
+                    <p className="text-[18px] font-bold hover:text-accentMain">
+                      Information
+                    </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-4">About Us</p>
+                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                      About Us
+                    </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-4">Contact Us</p>
+                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                      Contact Us
+                    </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-4">
+                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
                       Shipping &amp;
                       <br /> Returning
                     </p>
@@ -91,6 +149,16 @@ export default function FooterMain() {
                 </ul>
               </li>
             </ul>
+            {/* social media */}
+            <div className="flex  flex-row gap-3 mt-[6px] justify-start mb-2 sm:hidden">
+              <Link href="https://www.instagram.com">
+                <InstagramSVG className="hover:fill-[#2CA7A7]" />
+              </Link>
+
+              <Link href="https://www.facebook.com">
+                <FacebookSVG className="hover:fill-[#2CA7A7]" />
+              </Link>
+            </div>
           </div>
           <div className="flex justify-between">
             <p className="text-[10px] text-lightGray">Product Policy</p>
@@ -99,67 +167,135 @@ export default function FooterMain() {
             </p>
           </div>
         </div>
+
+        {/* others view */}
         <div className="hidden sm:block">
-          <div className="flex flex-row sm:pt-7 md:pt-10">
+          <div className="flex flex-row justify-between sm:pt-10 md:pt-10">
             {/* categories */}
-            <div className=" mt-[21px]">
-              <ul>
-                <li>
-                  <p className="text-[18px] font-bold leading-[30px]">
-                    Categories
-                  </p>
-                </li>
-                <li>
-                  <p className="text-[14px]  leading-[30px]">Jewelry</p>
-                </li>
-                <li>
-                  <p className="text-[14px]  leading-[30px]">Knitted Items</p>
-                </li>
-                <li>
-                  <p className="text-[14px] leading-[30px]">Candles</p>
-                </li>
-                <li>
-                  <p className="text-[14px] leading-[30px]">Gift Sets</p>
-                </li>
-              </ul>
-            </div>
+
+            <ul className="mt-[12px] ">
+              <li>
+                <p className="text-[18px] font-bold leading-[30px]">
+                  Categories
+                </p>
+              </li>
+              <li>
+                <p className="text-[14px]  leading-[30px] hover:text-accentMain cursor-pointer">
+                  Jewelry
+                </p>
+              </li>
+              <li>
+                <p className="text-[14px]  leading-[30px] hover:text-accentMain cursor-pointer">
+                  Knitted Items
+                </p>
+              </li>
+              <li>
+                <p className="text-[14px] leading-[30px] hover:text-accentMain cursor-pointer">
+                  Candles
+                </p>
+              </li>
+              <li>
+                <p className="text-[14px] leading-[30px] hover:text-accentMain cursor-pointer">
+                  Gift Sets
+                </p>
+              </li>
+            </ul>
+            {/* Information */}
+            <ul className="mt-[12px]">
+              <li>
+                <p className="text-[18px] font-bold leading-[30px]  ">
+                  Information
+                </p>
+              </li>
+              <li>
+                <p className="text-[14px]  leading-[30px] hover:text-accentMain cursor-pointer">
+                  About Us
+                </p>
+              </li>
+              <li>
+                <p className="text-[14px]  leading-[30px] hover:text-accentMain cursor-pointer">
+                  Contact Us
+                </p>
+              </li>
+              <li>
+                <p className="text-[14px] leading-[30px] hover:text-accentMain cursor-pointer">
+                  Shipping & Returns
+                </p>
+              </li>
+            </ul>
+
             {/* logo */}
-            <div className="mx-auto flex flex-col items-center group mr-auto hover:text-accentMain active:text-accentMainActive ">
-              <LogoBigSVG />
+            <div className=" flex flex-col items-center group  hover:text-accentMain active:text-accentMainActive cursor-pointer">
+              <Image
+                src="/logo/Crafted_Tresaures.png"
+                alt="logo"
+                width={139}
+                height={133}
+                className="md:w-[144px] md:h-[138px]"
+              />
               <h2 className="text-[24px] font-bold">Crafted</h2>
               <h3 className="text-[16px]">-Treasures-</h3>
             </div>
             <div>
               {/* join us */}
-              <div className="w-full min-w-[354px] flex flex-col gap-[18px] mt-[21px] ">
+              <div className="w-full  flex flex-col gap-[18px] mt-[12px] ">
                 <h1 className="text-[18px] font-bold ">
                   Pssst... Want the good stuff first?
                 </h1>
 
-                <div className="flex h-10 w-full ">
-                  <input
-                    className="outline-none py-3 px-4 text-[14px] flex-grow border border-accentMain border-r-0 rounded-l-[6px]"
-                    id="email"
-                    type="email"
-                    placeholder="email@gmail.com "
-                  />
-                  <button
-                    className="text-white text-[18px] font-bold leading-[0.88] py-3 pl-[22px] pr-[27px] bg-accentMain rounded-r-[6px]"
-                    type="button"
+                <div className="w-[300px] md:w-[360px]">
+                  <div className="flex h-10 relative">
+                    <input
+                      className={`outline-none py-3 px-4 text-[14px] flex-grow border border-r-0 rounded-l-[6px] ${
+                        error ? "border-error" : "border-accentMain"
+                      }`}
+                      type="email"
+                      placeholder="email@gmail.com "
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <button
+                      className={`text-white text-[18px] font-bold leading-[0.88] py-3 pl-[22px] pr-[27px] ${
+                        error
+                          ? "bg-lightGray cursor-not-allowed"
+                          : "bg-accentMain"
+                      } rounded-r-[6px]`}
+                      type="button"
+                      onClick={handleJoin}
+                    >
+                      Join
+                    </button>
+                    <div className="absolute right-[90px] top-1/2 -translate-y-1/2 w-6 h-6 flex items-center justify-center">
+                      {error && (
+                        <button type="button" onClick={handleResetEmailField}>
+                          <ErrorSVG />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
+                  <p
+                    className={`ml-2 mt-1 text-[10px] transition-opacity duration-200 ${
+                      error ? "text-error opacity-100" : "opacity-0"
+                    }`}
                   >
-                    Join
-                  </button>
+                    *Please enter a valid email address
+                  </p>
                 </div>
               </div>
-
               {/* social media */}
-              <div className="hidden md:flex md:gap-4 md:mt-[26px]">
-                <InstagramBigSVG />
-                <FacebookBigSVG />
+              <div className="flex  flex-row gap-3  justify-start mt-[14px] ">
+                <Link href="https://www.instagram.com">
+                  <InstagramBigSVG className="hover:fill-[#2CA7A7]" />
+                </Link>
+
+                <Link href="https://www.facebook.com">
+                  <FacebookBigSVG className="hover:fill-[#2CA7A7]" />
+                </Link>
               </div>
             </div>
           </div>
-          <div className="flex gap-16 justify-end">
+          <div className="flex gap-16 justify-end pb-3">
             <p className="text-[10px] text-lightGray">Product Policy</p>
             <p className="text-[10px] text-lightGray">
               &copy; 2025 Shop. All Rights Reserved.
