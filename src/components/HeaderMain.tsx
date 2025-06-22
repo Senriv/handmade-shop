@@ -64,7 +64,7 @@ export default function HeaderMain() {
   };
 
   return (
-    <header className="relative xs:mt-[20px] sm:mt-[41px] md:mt-[33px]">
+    <header className="relative xs:mt-[20px] sm:mt-[41px] md:mt-[32px]">
       <Container>
         {/* header's left side */}
         <div className="relative flex items-center">
