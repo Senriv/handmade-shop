@@ -18,6 +18,7 @@ const config: Config = {
         lightGray: "#acacac",
         mediumGray: "#727272",
         placeholderPrimary: "#A5A5A5",
+        error: "#F03800",
 
         accentBg: "rgba(55, 206, 206, 0.1)",
       },
