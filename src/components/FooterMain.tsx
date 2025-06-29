@@ -33,12 +33,12 @@ export default function FooterMain() {
 
   return (
     <footer className="bg-mint">
-      <Container>
+      <div className="max-w-[767px] mx-auto px-[14px] sm:px-[30px] sm:max-w-[1439px] md:px-[90px] md:min-w-[1440px]">
         {/* mobile view */}
         <div className="block sm:hidden">
-          <div className="pt-6 flex flex-col">
+          <div className="pt-5 flex flex-col">
             {/* join us */}
-            <div className="max-w-[358px] flex flex-col  mb-[14px] ">
+            <div className="max-w-[358px] flex flex-col  mb-[10px] ">
               <h1 className="text-[18px] font-bold mb-[14px]">
                 Pssst... Want the good stuff first?
               </h1>
@@ -85,7 +85,7 @@ export default function FooterMain() {
             <ul className="flex flex-row justify-between w-full ">
               {/* categories */}
               <li className="">
-                <ul>
+                <ul className="flex flex-col gap-[6px]">
                   <li>
                     <p className="text-[18px] font-bold ">Categories</p>
                   </li>
@@ -124,7 +124,7 @@ export default function FooterMain() {
               </li>
               {/* information */}
               <li>
-                <ul className="flex flex-col ">
+                <ul className="flex flex-col gap-[6px]">
                   <li>
                     <p className="text-[18px] font-bold hover:text-accentMain">
                       Information
@@ -150,7 +150,7 @@ export default function FooterMain() {
               </li>
             </ul>
             {/* social media */}
-            <div className="flex  flex-row gap-3 mt-[6px] justify-start mb-2 sm:hidden">
+            <div className="flex  flex-row gap-3 mt-5 justify-start mb-[14px] sm:hidden">
               <Link href="https://www.instagram.com">
                 <InstagramSVG className="hover:fill-[#2CA7A7]" />
               </Link>
@@ -160,8 +160,10 @@ export default function FooterMain() {
               </Link>
             </div>
           </div>
-          <div className="flex justify-between">
-            <p className="text-[10px] text-lightGray">Product Policy</p>
+          <div className="flex justify-between pb-[6px]">
+            <p className="text-[10px] text-lightGray cursor-pointer">
+              Product Policy
+            </p>
             <p className="text-[10px] text-lightGray">
               &copy; 2025 Shop. All Rights Reserved.
             </p>
@@ -171,59 +173,60 @@ export default function FooterMain() {
         {/* others view */}
         <div className="hidden sm:block">
           <div className="flex flex-row justify-between sm:pt-10 md:pt-10">
-            {/* categories */}
+            <div className="flex flex-row mt-3 sm:gap-[92px] md:gap-[118px]">
+              {/* categories */}
 
-            <ul className="mt-[12px] ">
-              <li>
-                <p className="text-[18px] font-bold leading-[30px]">
-                  Categories
-                </p>
-              </li>
-              <li>
-                <p className="text-[14px]  leading-[30px] hover:text-accentMain cursor-pointer">
-                  Jewelry
-                </p>
-              </li>
-              <li>
-                <p className="text-[14px]  leading-[30px] hover:text-accentMain cursor-pointer">
-                  Knitted Items
-                </p>
-              </li>
-              <li>
-                <p className="text-[14px] leading-[30px] hover:text-accentMain cursor-pointer">
-                  Candles
-                </p>
-              </li>
-              <li>
-                <p className="text-[14px] leading-[30px] hover:text-accentMain cursor-pointer">
-                  Gift Sets
-                </p>
-              </li>
-            </ul>
-            {/* Information */}
-            <ul className="mt-[12px]">
-              <li>
-                <p className="text-[18px] font-bold leading-[30px]  ">
-                  Information
-                </p>
-              </li>
-              <li>
-                <p className="text-[14px]  leading-[30px] hover:text-accentMain cursor-pointer">
-                  About Us
-                </p>
-              </li>
-              <li>
-                <p className="text-[14px]  leading-[30px] hover:text-accentMain cursor-pointer">
-                  Contact Us
-                </p>
-              </li>
-              <li>
-                <p className="text-[14px] leading-[30px] hover:text-accentMain cursor-pointer">
-                  Shipping & Returns
-                </p>
-              </li>
-            </ul>
-
+              <ul>
+                <li>
+                  <p className="text-[18px] font-bold leading-[30px]">
+                    Categories
+                  </p>
+                </li>
+                <li>
+                  <p className="text-[14px]  leading-[30px] hover:text-accentMain cursor-pointer">
+                    Jewelry
+                  </p>
+                </li>
+                <li>
+                  <p className="text-[14px]  leading-[30px] hover:text-accentMain cursor-pointer">
+                    Knitted Items
+                  </p>
+                </li>
+                <li>
+                  <p className="text-[14px] leading-[30px] hover:text-accentMain cursor-pointer">
+                    Candles
+                  </p>
+                </li>
+                <li>
+                  <p className="text-[14px] leading-[30px] hover:text-accentMain cursor-pointer">
+                    Gift Sets
+                  </p>
+                </li>
+              </ul>
+              {/* Information */}
+              <ul>
+                <li>
+                  <p className="text-[18px] font-bold leading-[30px]  ">
+                    Information
+                  </p>
+                </li>
+                <li>
+                  <p className="text-[14px]  leading-[30px] hover:text-accentMain cursor-pointer">
+                    About Us
+                  </p>
+                </li>
+                <li>
+                  <p className="text-[14px]  leading-[30px] hover:text-accentMain cursor-pointer">
+                    Contact Us
+                  </p>
+                </li>
+                <li>
+                  <p className="text-[14px] leading-[30px] hover:text-accentMain cursor-pointer">
+                    Shipping & Returns
+                  </p>
+                </li>
+              </ul>
+            </div>
             {/* logo */}
             <div className=" flex flex-col items-center group  hover:text-accentMain active:text-accentMainActive cursor-pointer">
               <Image
@@ -296,13 +299,15 @@ export default function FooterMain() {
             </div>
           </div>
           <div className="flex gap-16 justify-end pb-3">
-            <p className="text-[10px] text-lightGray">Product Policy</p>
+            <p className="text-[10px] text-lightGray cursor-pointer">
+              Product Policy
+            </p>
             <p className="text-[10px] text-lightGray">
               &copy; 2025 Shop. All Rights Reserved.
             </p>
           </div>
         </div>
-      </Container>
+      </div>
     </footer>
   );
 }
