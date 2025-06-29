@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { Container } from "./Container";
 
 import InstagramSVG from "@/assets/footer-icons/instagram.svg";
 import InstagramBigSVG from "@/assets/footer-icons/instagramBig.svg";
