@@ -283,10 +283,12 @@ export default function FooterMain() {
             </div>
           </div>
           <div className="flex gap-16 justify-end pb-3">
+
             <p className="text-[14px] text-lightGray cursor-pointer">
               Product Policy
             </p>
             <p className="text-[14px] text-lightGray">
+
               &copy; 2025 Shop. All Rights Reserved.
             </p>
           </div>
