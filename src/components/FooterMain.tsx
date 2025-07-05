@@ -89,29 +89,29 @@ export default function FooterMain() {
                     <p className="text-[18px] font-bold ">Categories</p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
                       Jewelry
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
                       Knitted Items
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
                       Candles
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
                       Gift Sets
                     </p>
                   </li>
                 </ul>
               </li>
               {/* logo */}
-              <li className="flex flex-col items-center group  hover:text-accentMain active:text-accentMainActive ">
+              <li className="flex flex-col items-center group   active:text-accentMainActive ">
                 <Image
                   src="/logo/Crafted_Tresaures.png"
                   alt="logo"
@@ -125,22 +125,22 @@ export default function FooterMain() {
               <li>
                 <ul className="flex flex-col gap-[6px]">
                   <li>
-                    <p className="text-[18px] font-bold hover:text-accentMain">
+                    <p className="text-[18px] font-bold active:text-accentMainActive ">
                       Information
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
                       About Us
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
                       Contact Us
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
                       Shipping &amp;
                       <br /> Returning
                     </p>
@@ -151,11 +151,11 @@ export default function FooterMain() {
             {/* social media */}
             <div className="flex  flex-row gap-3 mt-5 justify-start mb-[14px] sm:hidden">
               <Link href="https://www.instagram.com">
-                <InstagramSVG className="hover:fill-[#2CA7A7]" />
+                <InstagramSVG className="active:fill-[#2CA7A7]" />
               </Link>
 
               <Link href="https://www.facebook.com">
-                <FacebookSVG className="hover:fill-[#2CA7A7]" />
+                <FacebookSVG className="active:fill-[#2CA7A7]" />
               </Link>
             </div>
           </div>
