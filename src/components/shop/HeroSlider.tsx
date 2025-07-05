@@ -124,14 +124,20 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const images = [
-  "/images/HeroSliderBg/slide_1.jpg",
-  "/images/HeroSliderBg/slide_2.jpg",
-  "/images/HeroSliderBg/slide_3.jpg",
-  "/images/HeroSliderBg/slide_4.jpg",
-];
+export interface HeroSlide {
+  id: string;
+  imageUrl: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  priority?: boolean;
+}
 
-function HeroSlider() {
+interface HeroSliderProps {
+  slides: HeroSlide[];
+}
+
+function HeroSlider({ slides }: HeroSliderProps) {
   return (
     <section className="mt-5 mb-[14px] sm:mt-[17px] sm:mb-[21px] md:mt-6 md:mb-10 flex justify-center">
       <Swiper
@@ -146,15 +152,15 @@ function HeroSlider() {
         autoplay={{ delay: 3000 }}
         loop
       >
-        {images.map((src, index) => (
-          <SwiperSlide key={index}>
-            <div className="relative w-full h-full">
+        {slides.map((slide) => (
+          <SwiperSlide key={slide.id}>
+            <div className="relative w-full h-full aspect-[3/1]">
               <Image
-                src={src}
-                alt={`Slide ${index + 1}`}
+                src={slide.imageUrl}
+                alt={`Slide ${slide.title}`}
                 fill
                 className="object-fill"
-                priority={index === 0}
+                priority={slide.priority === true}
               />
             </div>
           </SwiperSlide>
