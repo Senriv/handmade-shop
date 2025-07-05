@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 
 import InstagramSVG from "@/assets/footer-icons/instagram.svg";
 import InstagramBigSVG from "@/assets/footer-icons/instagramBig.svg";
@@ -10,25 +9,11 @@ import FacebookSVG from "@/assets/footer-icons/facebook.svg";
 import FacebookBigSVG from "@/assets/footer-icons/facebookBig.svg";
 import ErrorSVG from "@/assets/footer-icons/error_close.svg";
 
+import { useFooterSubscription } from "@/hooks/useFooterSubscription";
+
 export default function FooterMain() {
-  const [email, setEmail] = useState<string>("");
-  const [error, setError] = useState<boolean>(false);
-
-  const handleJoin = () => {
-    if (!email) {
-      setError(true);
-    } else if (!email.includes("@")) {
-      setError(true);
-    } else {
-      setError(false);
-      console.log("Subscribed with:", email);
-    }
-  };
-
-  const handleResetEmailField = () => {
-    setEmail("");
-    setError(false);
-  };
+  const { email, error, handleEmailChange, handleJoin, handleResetEmailField } =
+    useFooterSubscription();
 
   return (
     <footer className="bg-mint">
@@ -51,7 +36,7 @@ export default function FooterMain() {
                   type="email"
                   placeholder="email@gmail.com "
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => handleEmailChange(e.target.value)}
                 />
                 <button
                   className={`text-white text-[18px] font-bold leading-[0.88] py-3 pl-[22px] pr-[27px] ${
@@ -254,7 +239,7 @@ export default function FooterMain() {
                       type="email"
                       placeholder="email@gmail.com "
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => handleEmailChange(e.target.value)}
                     />
                     <button
                       className={`text-white text-[18px] font-bold leading-[0.88] py-3 pl-[22px] pr-[27px] ${
