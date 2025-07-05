@@ -104,7 +104,7 @@ export default function FooterMain() {
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29]hover:text-accentMain">
+                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
                       Gift Sets
                     </p>
                   </li>
@@ -298,10 +298,10 @@ export default function FooterMain() {
             </div>
           </div>
           <div className="flex gap-16 justify-end pb-3">
-            <p className="text-[10px] text-lightGray cursor-pointer">
+            <p className="text-[14px] text-lightGray cursor-pointer">
               Product Policy
             </p>
-            <p className="text-[10px] text-lightGray">
+            <p className="text-[14px] text-lightGray">
               &copy; 2025 Shop. All Rights Reserved.
             </p>
           </div>
