@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 
 import InstagramSVG from "@/assets/footer-icons/instagram.svg";
 import InstagramBigSVG from "@/assets/footer-icons/instagramBig.svg";
@@ -10,25 +9,11 @@ import FacebookSVG from "@/assets/footer-icons/facebook.svg";
 import FacebookBigSVG from "@/assets/footer-icons/facebookBig.svg";
 import ErrorSVG from "@/assets/footer-icons/error_close.svg";
 
+import { useFooterSubscription } from "@/hooks/useFooterSubscription";
+
 export default function FooterMain() {
-  const [email, setEmail] = useState<string>("");
-  const [error, setError] = useState<boolean>(false);
-
-  const handleJoin = () => {
-    if (!email) {
-      setError(true);
-    } else if (!email.includes("@")) {
-      setError(true);
-    } else {
-      setError(false);
-      console.log("Subscribed with:", email);
-    }
-  };
-
-  const handleResetEmailField = () => {
-    setEmail("");
-    setError(false);
-  };
+  const { email, error, handleEmailChange, handleJoin, handleResetEmailField } =
+    useFooterSubscription();
 
   return (
     <footer className="bg-mint">
@@ -51,7 +36,7 @@ export default function FooterMain() {
                   type="email"
                   placeholder="email@gmail.com "
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => handleEmailChange(e.target.value)}
                 />
                 <button
                   className={`text-white text-[18px] font-bold leading-[0.88] py-3 pl-[22px] pr-[27px] ${
@@ -89,29 +74,29 @@ export default function FooterMain() {
                     <p className="text-[18px] font-bold ">Categories</p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
                       Jewelry
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
                       Knitted Items
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
                       Candles
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29]hover:text-accentMain">
+                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
                       Gift Sets
                     </p>
                   </li>
                 </ul>
               </li>
               {/* logo */}
-              <li className="flex flex-col items-center group  hover:text-accentMain active:text-accentMainActive ">
+              <li className="flex flex-col items-center group   active:text-accentMainActive ">
                 <Image
                   src="/logo/Crafted_Tresaures.png"
                   alt="logo"
@@ -125,22 +110,22 @@ export default function FooterMain() {
               <li>
                 <ul className="flex flex-col gap-[6px]">
                   <li>
-                    <p className="text-[18px] font-bold hover:text-accentMain">
+                    <p className="text-[18px] font-bold active:text-accentMainActive ">
                       Information
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
                       About Us
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
                       Contact Us
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] hover:text-accentMain">
+                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
                       Shipping &amp;
                       <br /> Returning
                     </p>
@@ -151,11 +136,11 @@ export default function FooterMain() {
             {/* social media */}
             <div className="flex  flex-row gap-3 mt-5 justify-start mb-[14px] sm:hidden">
               <Link href="https://www.instagram.com">
-                <InstagramSVG className="hover:fill-[#2CA7A7]" />
+                <InstagramSVG className="active:fill-[#2CA7A7]" />
               </Link>
 
               <Link href="https://www.facebook.com">
-                <FacebookSVG className="hover:fill-[#2CA7A7]" />
+                <FacebookSVG className="active:fill-[#2CA7A7]" />
               </Link>
             </div>
           </div>
@@ -254,7 +239,7 @@ export default function FooterMain() {
                       type="email"
                       placeholder="email@gmail.com "
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => handleEmailChange(e.target.value)}
                     />
                     <button
                       className={`text-white text-[18px] font-bold leading-[0.88] py-3 pl-[22px] pr-[27px] ${
@@ -298,10 +283,12 @@ export default function FooterMain() {
             </div>
           </div>
           <div className="flex gap-16 justify-end pb-3">
-            <p className="text-[10px] text-lightGray cursor-pointer">
+
+            <p className="text-[14px] text-lightGray cursor-pointer">
               Product Policy
             </p>
-            <p className="text-[10px] text-lightGray">
+            <p className="text-[14px] text-lightGray">
+
               &copy; 2025 Shop. All Rights Reserved.
             </p>
           </div>
