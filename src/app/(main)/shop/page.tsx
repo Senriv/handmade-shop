@@ -52,7 +52,7 @@ export default function ShopPage() {
     <>
       <HeroSlider slides={heroSlides} />
       <ProductListWithFilter className="flex flex-col gap-[14px] sm:gap-[65px] sm:flex-row">
-        <Filter className="h-7 sm:w-[263px]" />
+        <Filter className="h-7 sm:w-[263px] flex-shrink-0" />
         <ProductList
           productCategories={productCategories}
           selectedCategory={selectedCategory}
