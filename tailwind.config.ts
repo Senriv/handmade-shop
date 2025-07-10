@@ -12,6 +12,7 @@ const config: Config = {
     extend: {
       colors: {
         textMain: "#3d3d3d",
+        accentMainLight: "#ECFBFB",
         accentMain: "#37cece",
         accentMainActive: "#2CA7A7",
         mint: "#ecfbfb",
@@ -19,12 +20,13 @@ const config: Config = {
         mediumGray: "#727272",
         placeholderPrimary: "#A5A5A5",
         error: "#F03800",
+        labelSale: "#ce373a",
 
         accentBg: "rgba(55, 206, 206, 0.1)",
       },
     },
     screens: {
-      xs: "320px",
+      xs: "389px",
       sm: "768px",
       md: "1440px",
     },
