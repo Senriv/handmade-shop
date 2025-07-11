@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import HeroSlider, { HeroSlide } from "@/components/shop/HeroSlider";
-import ProductListWithFilter from "@/components/shop/ProductListWithFilter/ProductListWithFilter";
 import FilterSection from "@/components/shop/ProductListWithFilter/FilterSection";
 import ProductListSection from "@/components/shop/ProductListWithFilter/ProductListSection";
 
@@ -51,7 +50,7 @@ export default function ShopPage() {
   return (
     <>
       <HeroSlider slides={heroSlides} />
-      <ProductListWithFilter className="flex flex-col gap-[14px] sm:gap-[65px] sm:flex-row">
+      <section className="flex flex-col gap-[14px] sm:gap-[65px] sm:flex-row">
         <FilterSection className="h-7 sm:w-[263px] flex-shrink-0" />
         <ProductListSection
           productCategories={productCategories}
@@ -60,7 +59,7 @@ export default function ShopPage() {
           sortOrder={sortOrder}
           dispatchSortOrder={dispatchSortOrder}
         />
-      </ProductListWithFilter>
+      </section>
       <Link href="/shop/r8KlsnF93JdWqmXz4aTp7HcB">
         <div className="p-3 hover:bg-mediumGray ">
           Click me and You&apos;ll see the magic
