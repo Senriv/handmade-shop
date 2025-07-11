@@ -16,6 +16,7 @@ const config: Config = {
         accentMain: "#37cece",
         accentMainActive: "#2CA7A7",
         mint: "#ecfbfb",
+        defaultGrey: "#EAEAEA",
         lightGray: "#acacac",
         mediumGray: "#727272",
         placeholderPrimary: "#A5A5A5",

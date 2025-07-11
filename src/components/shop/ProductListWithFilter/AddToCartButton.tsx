@@ -3,11 +3,11 @@ import React from "react";
 
 import PlusSVG from "@/assets/main/catalog/pluss.svg";
 
-interface BuyButtonProps {
+interface AddToCartButtonProps {
   className?: string;
 }
 
-const BuyButton: React.FC<BuyButtonProps> = ({ className }) => {
+const AddToCartButton: React.FC<AddToCartButtonProps> = ({ className }) => {
   const handleAddToCart = () => {
     console.log("Добавил в корзину товар, молодец!");
   };
@@ -15,12 +15,12 @@ const BuyButton: React.FC<BuyButtonProps> = ({ className }) => {
   return (
     <button
       type="button"
-      className={`absolute p-[11px] bg-white border-2  border-accentMain rounded-xl ${className}`}
+      className={` p-[11px] bg-white border-2  border-accentMain rounded-xl ${className}`}
       onClick={handleAddToCart}
     >
-      <PlusSVG />
+      <PlusSVG className="text-accentMain" />
     </button>
   );
 };
 
-export default BuyButton;
+export default AddToCartButton;

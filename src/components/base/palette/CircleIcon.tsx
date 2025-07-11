@@ -38,7 +38,7 @@ const CircleIcon: React.FC<CircleIconProps> = ({
           cy={cy}
           r={4.5 - outerStrokeWidth / 2}
           fill="white"
-          stroke={outerStrokeColor}
+          className={`stroke-current ${outerStrokeColor}`}
           strokeWidth={outerStrokeWidth}
         />
       )}

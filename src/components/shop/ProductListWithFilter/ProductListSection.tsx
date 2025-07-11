@@ -5,7 +5,7 @@ import ProductItem from "./ProductItem";
 import FilterDownSVG from "@/assets/main/catalog/filter_to_low.svg";
 import FilterUpSVG from "@/assets/main/catalog/filter_to_high.svg";
 
-interface ProductListProps {
+interface ProductListSectionProps {
   productCategories: string[];
   selectedCategory: string;
   setSelectedCategory: (category: string) => void;
@@ -13,19 +13,17 @@ interface ProductListProps {
   dispatchSortOrder: React.Dispatch<
     { type: "TOGGLE_ASC" } | { type: "TOGGLE_DESC" }
   >;
-  className?: string;
 }
 
-const ProductList = ({
+const ProductListSection = ({
   productCategories,
   selectedCategory,
   setSelectedCategory,
   dispatchSortOrder,
   sortOrder,
-  className,
-}: ProductListProps) => {
+}: ProductListSectionProps) => {
   return (
-    <section className={`${className}`}>
+    <section>
       {/* categories + fliter svgs */}
       <div className="flex flex-row items-center justify-between mb-[14px]">
         {/* categories */}
@@ -55,7 +53,11 @@ const ProductList = ({
               onClick={() => dispatchSortOrder({ type: "TOGGLE_DESC" })}
             >
               <FilterDownSVG
-                style={{ fill: sortOrder === "desc" ? "#2CA7A7" : "#727272" }}
+                className={
+                  sortOrder === "desc"
+                    ? "text-accentMainActive"
+                    : "text-mediumGray"
+                }
               />
             </button>
           </li>
@@ -66,7 +68,11 @@ const ProductList = ({
               onClick={() => dispatchSortOrder({ type: "TOGGLE_ASC" })}
             >
               <FilterUpSVG
-                style={{ fill: sortOrder === "asc" ? "#2CA7A7" : "#727272" }}
+                className={
+                  sortOrder === "asc"
+                    ? "text-accentMainActive"
+                    : "text-mediumGray"
+                }
               />
             </button>
           </li>
@@ -86,4 +92,4 @@ const ProductList = ({
   );
 };
 
-export default ProductList;
+export default ProductListSection;

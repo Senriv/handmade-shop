@@ -43,7 +43,9 @@ const PaletteSelector = ({ isHovered }: PaletteSelectorProps) => {
           <CircleIcon
             className="w-[9px] h-[9px] sm:w-[14px] sm:h-[14px]"
             fillColor={color}
-            outerStrokeColor={selectedColor === color ? "#37CECE" : "#EAEAEA"}
+            outerStrokeColor={
+              selectedColor === color ? "text-accentMain" : "text-defaultGrey"
+            }
           />
         </div>
       ))}

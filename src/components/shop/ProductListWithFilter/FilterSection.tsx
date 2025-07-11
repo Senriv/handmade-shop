@@ -1,9 +1,9 @@
 import React from "react";
 
-type FilterProps = {
+type FilterSectionProps = {
   className?: string;
 };
-const Filter = ({ className }: FilterProps) => {
+const FilterSection = ({ className }: FilterSectionProps) => {
   return (
     <section className={`${className}`}>
       <h1>Фильтра!!!!!</h1>
@@ -11,4 +11,4 @@ const Filter = ({ className }: FilterProps) => {
   );
 };
 
-export default Filter;
+export default FilterSection;

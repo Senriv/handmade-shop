@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import HeroSlider, { HeroSlide } from "@/components/shop/HeroSlider";
 import ProductListWithFilter from "@/components/shop/ProductListWithFilter/ProductListWithFilter";
-import Filter from "@/components/shop/ProductListWithFilter/Filter";
-import ProductList from "@/components/shop/ProductListWithFilter/ProductList";
+import FilterSection from "@/components/shop/ProductListWithFilter/FilterSection";
+import ProductListSection from "@/components/shop/ProductListWithFilter/ProductListSection";
 
 import { useSortReducer } from "@/hooks/productListWithFilter/useSortReducer";
 
@@ -52,14 +52,13 @@ export default function ShopPage() {
     <>
       <HeroSlider slides={heroSlides} />
       <ProductListWithFilter className="flex flex-col gap-[14px] sm:gap-[65px] sm:flex-row">
-        <Filter className="h-7 sm:w-[263px] flex-shrink-0" />
-        <ProductList
+        <FilterSection className="h-7 sm:w-[263px] flex-shrink-0" />
+        <ProductListSection
           productCategories={productCategories}
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
           sortOrder={sortOrder}
           dispatchSortOrder={dispatchSortOrder}
-          className=""
         />
       </ProductListWithFilter>
       <Link href="/shop/r8KlsnF93JdWqmXz4aTp7HcB">
