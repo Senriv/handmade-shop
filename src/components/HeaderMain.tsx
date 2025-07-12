@@ -185,7 +185,7 @@ export default function HeaderMain() {
                 style={{ margin: "0 6px", width: "calc(100% - 12px)" }}
                 onClick={(e) => e.stopPropagation()}
               >
-                <ul className="flex flex-col text-[14px]">
+                <ul className="flex flex-col text-base leading-[21px] ">
                   {navLinks.map(({ href, label }) => (
                     <li key={href}>
                       <Link
