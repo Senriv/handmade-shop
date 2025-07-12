@@ -3,10 +3,9 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import InstagramSVG from "@/assets/footer-icons/instagram.svg";
-import InstagramBigSVG from "@/assets/footer-icons/instagramBig.svg";
-import FacebookSVG from "@/assets/footer-icons/facebook.svg";
-import FacebookBigSVG from "@/assets/footer-icons/facebookBig.svg";
+import FacebookSvg from "./base/FacebookSvg";
+import InstagramSvg from "./base/InstagramSvg";
+
 import ErrorSVG from "@/assets/footer-icons/error_close.svg";
 
 import { useFooterSubscription } from "@/hooks/useFooterSubscription";
@@ -50,7 +49,7 @@ export default function FooterMain() {
                 <div className="absolute right-[90px] top-1/2 -translate-y-1/2 w-6 h-6 flex items-center justify-center">
                   {error && (
                     <button type="button" onClick={handleResetEmailField}>
-                      <ErrorSVG />
+                      <ErrorSVG className="text-error" />
                     </button>
                   )}
                 </div>
@@ -103,8 +102,8 @@ export default function FooterMain() {
                   width={70}
                   height={67}
                 />
-                <h2 className="text-[11px] font-bold">Crafted</h2>
-                <h3 className="text-[7px]">-Treasures-</h3>
+                <h2 className="text-[11px] font-bold mt-[7px]">Crafted</h2>
+                <h3 className="text-[7px] mt-[2px]">-Treasures-</h3>
               </li>
               {/* information */}
               <li>
@@ -136,11 +135,19 @@ export default function FooterMain() {
             {/* social media */}
             <div className="flex  flex-row gap-3 mt-5 justify-start mb-[14px] sm:hidden">
               <Link href="https://www.instagram.com">
-                <InstagramSVG className="active:fill-[#2CA7A7]" />
+                <InstagramSvg
+                  width={24}
+                  height={24}
+                  className="text-accentMain active:text-accentMainActive"
+                />
               </Link>
 
               <Link href="https://www.facebook.com">
-                <FacebookSVG className="active:fill-[#2CA7A7]" />
+                <FacebookSvg
+                  width={20}
+                  height={24}
+                  className="text-accentMain active:text-accentMainActive"
+                />
               </Link>
             </div>
           </div>
@@ -220,8 +227,10 @@ export default function FooterMain() {
                 height={133}
                 className="md:w-[144px] md:h-[138px]"
               />
-              <h2 className="text-[24px] font-bold">Crafted</h2>
-              <h3 className="text-[16px]">-Treasures-</h3>
+              <h2 className="text-[24px] font-bold mt-[15px]">Crafted</h2>
+              <h3 className="text-[16px] font-semibold mt-[2px]">
+                -Treasures-
+              </h3>
             </div>
             <div>
               {/* join us */}
@@ -255,7 +264,7 @@ export default function FooterMain() {
                     <div className="absolute right-[90px] top-1/2 -translate-y-1/2 w-6 h-6 flex items-center justify-center">
                       {error && (
                         <button type="button" onClick={handleResetEmailField}>
-                          <ErrorSVG />
+                          <ErrorSVG className="text-error" />
                         </button>
                       )}
                     </div>
@@ -273,22 +282,28 @@ export default function FooterMain() {
               {/* social media */}
               <div className="flex  flex-row gap-3  justify-start mt-[14px] ">
                 <Link href="https://www.instagram.com">
-                  <InstagramBigSVG className="hover:fill-[#2CA7A7]" />
+                  <InstagramSvg
+                    width={30}
+                    height={30}
+                    className="text-accentMain active:text-accentMainActive"
+                  />
                 </Link>
 
                 <Link href="https://www.facebook.com">
-                  <FacebookBigSVG className="hover:fill-[#2CA7A7]" />
+                  <FacebookSvg
+                    width={25}
+                    height={30}
+                    className="text-accentMain active:text-accentMainActive"
+                  />
                 </Link>
               </div>
             </div>
           </div>
           <div className="flex gap-16 justify-end pb-3">
-
             <p className="text-[14px] text-lightGray cursor-pointer">
               Product Policy
             </p>
             <p className="text-[14px] text-lightGray">
-
               &copy; 2025 Shop. All Rights Reserved.
             </p>
           </div>
