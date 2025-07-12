@@ -21,8 +21,8 @@ export default function FooterMain() {
         <div className="block sm:hidden">
           <div className="pt-5 flex flex-col">
             {/* join us */}
-            <div className="max-w-[358px] flex flex-col  mb-[10px] ">
-              <h1 className="text-[18px] font-bold mb-[14px]">
+            <div className="max-w-[358px] flex flex-col  mb-[5px] ">
+              <h1 className="text-[18px] font-bold mb-[14px] leading-[16px]">
                 Pssst... Want the good stuff first?
               </h1>
 
@@ -70,7 +70,9 @@ export default function FooterMain() {
               <li className="">
                 <ul className="flex flex-col gap-[6px]">
                   <li>
-                    <p className="text-[18px] font-bold ">Categories</p>
+                    <p className="text-[18px] font-bold leading-[16px]">
+                      Categories
+                    </p>
                   </li>
                   <li>
                     <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
@@ -109,7 +111,7 @@ export default function FooterMain() {
               <li>
                 <ul className="flex flex-col gap-[6px]">
                   <li>
-                    <p className="text-[18px] font-bold active:text-accentMainActive ">
+                    <p className="text-[18px] font-bold leading-[16px]">
                       Information
                     </p>
                   </li>
@@ -124,7 +126,7 @@ export default function FooterMain() {
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
+                    <p className="text-[14px] leading-[14px] active:text-accentMainActive ">
                       Shipping &amp;
                       <br /> Returning
                     </p>
@@ -152,10 +154,10 @@ export default function FooterMain() {
             </div>
           </div>
           <div className="flex justify-between pb-[6px]">
-            <p className="text-[10px] text-lightGray cursor-pointer">
+            <p className="text-[10px] text-lightGray leading-[12px]">
               Product Policy
             </p>
-            <p className="text-[10px] text-lightGray">
+            <p className="text-[10px] text-lightGray leading-[12px]">
               &copy; 2025 Shop. All Rights Reserved.
             </p>
           </div>
@@ -164,32 +166,32 @@ export default function FooterMain() {
         {/* others view */}
         <div className="hidden sm:block">
           <div className="flex flex-row justify-between sm:pt-10 md:pt-10">
-            <div className="flex flex-row mt-3 sm:gap-[92px] md:gap-[118px]">
+            <div className="flex flex-row mt-3 md:mt-5 sm:gap-[92px] md:gap-[118px]">
               {/* categories */}
 
               <ul>
                 <li>
-                  <p className="text-[18px] font-bold leading-[30px]">
+                  <p className="text-[18px] font-bold leading-[16px] mb-2">
                     Categories
                   </p>
                 </li>
                 <li>
-                  <p className="text-[14px]  leading-[30px] hover:text-accentMain cursor-pointer">
+                  <p className="text-[14px]  leading-[30px] hover:text-accentMain active:text-accentMainActive cursor-pointer">
                     Jewelry
                   </p>
                 </li>
                 <li>
-                  <p className="text-[14px]  leading-[30px] hover:text-accentMain cursor-pointer">
+                  <p className="text-[14px]  leading-[30px] hover:text-accentMain active:text-accentMainActive cursor-pointer">
                     Knitted Items
                   </p>
                 </li>
                 <li>
-                  <p className="text-[14px] leading-[30px] hover:text-accentMain cursor-pointer">
+                  <p className="text-[14px] leading-[30px] hover:text-accentMain active:text-accentMainActive cursor-pointer">
                     Candles
                   </p>
                 </li>
                 <li>
-                  <p className="text-[14px] leading-[30px] hover:text-accentMain cursor-pointer">
+                  <p className="text-[14px] leading-[30px] hover:text-accentMain active:text-accentMainActive cursor-pointer">
                     Gift Sets
                   </p>
                 </li>
@@ -197,22 +199,22 @@ export default function FooterMain() {
               {/* Information */}
               <ul>
                 <li>
-                  <p className="text-[18px] font-bold leading-[30px]  ">
+                  <p className="text-[18px] font-bold leading-[16px] mb-2  ">
                     Information
                   </p>
                 </li>
                 <li>
-                  <p className="text-[14px]  leading-[30px] hover:text-accentMain cursor-pointer">
+                  <p className="text-[14px]  leading-[30px] hover:text-accentMain active:text-accentMainActive cursor-pointer">
                     About Us
                   </p>
                 </li>
                 <li>
-                  <p className="text-[14px]  leading-[30px] hover:text-accentMain cursor-pointer">
+                  <p className="text-[14px]  leading-[30px] hover:text-accentMain active:text-accentMainActive cursor-pointer">
                     Contact Us
                   </p>
                 </li>
                 <li>
-                  <p className="text-[14px] leading-[30px] hover:text-accentMain cursor-pointer">
+                  <p className="text-[14px] leading-[30px] hover:text-accentMain active:text-accentMainActive cursor-pointer">
                     Shipping & Returns
                   </p>
                 </li>
@@ -227,14 +229,16 @@ export default function FooterMain() {
                 height={133}
                 className="md:w-[144px] md:h-[138px]"
               />
-              <h2 className="text-[24px] font-bold mt-[15px]">Crafted</h2>
-              <h3 className="text-[16px] font-semibold mt-[2px]">
+              <h2 className="text-[24px] font-bold mt-[15px] leading-[29px]">
+                Crafted
+              </h2>
+              <h3 className="text-[16px] font-semibold mt-[-2px] leading-[19px]">
                 -Treasures-
               </h3>
             </div>
             <div>
               {/* join us */}
-              <div className="w-full  flex flex-col gap-[18px] mt-[12px] ">
+              <div className="w-full  flex flex-col gap-[18px] mt-[12px] md:mt-5">
                 <h1 className="text-[18px] font-bold ">
                   Pssst... Want the good stuff first?
                 </h1>
@@ -280,7 +284,7 @@ export default function FooterMain() {
                 </div>
               </div>
               {/* social media */}
-              <div className="flex  flex-row gap-3  justify-start mt-[14px] ">
+              <div className="flex  flex-row gap-3  justify-start mt-[14px] mb-[77px]">
                 <Link href="https://www.instagram.com">
                   <InstagramSvg
                     width={30}
@@ -299,11 +303,11 @@ export default function FooterMain() {
               </div>
             </div>
           </div>
-          <div className="flex gap-16 justify-end pb-3">
-            <p className="text-[14px] text-lightGray cursor-pointer">
+          <div className="flex gap-[62px] justify-end pb-[6px]">
+            <p className="text-[14px] text-lightGray cursor-pointer leading-[16px]">
               Product Policy
             </p>
-            <p className="text-[14px] text-lightGray">
+            <p className="text-[14px] text-lightGray leading-[16px]">
               &copy; 2025 Shop. All Rights Reserved.
             </p>
           </div>
