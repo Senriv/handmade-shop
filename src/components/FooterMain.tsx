@@ -5,9 +5,7 @@ import Image from "next/image";
 
 import FacebookSvg from "./base/FacebookSvg";
 import InstagramSvg from "./base/InstagramSvg";
-
 import ErrorSVG from "@/assets/footer-icons/error_close.svg";
-
 import { useFooterSubscription } from "@/hooks/useFooterSubscription";
 
 export default function FooterMain() {
