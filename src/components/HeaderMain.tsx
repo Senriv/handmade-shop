@@ -65,7 +65,6 @@ export default function HeaderMain() {
 
   return (
     <header className="relative xs:mt-[20px] sm:mt-[30px] ">
-
       <Container>
         {/* header's left side */}
         <div className="relative flex items-center">
@@ -104,7 +103,7 @@ export default function HeaderMain() {
           {/* logo+ name (middle) */}
           <div className="flex-none z-10 ">
             <div
-              className={`flex items-center gap-2 transition-colors cursor-pointer ${
+              className={`flex  items-center gap-[2px] transition-colors cursor-pointer ${
                 isActive ? "text-accentMainActive" : "hover:text-accentMain"
               }`}
               onMouseDown={() => setIsActive(true)}
@@ -116,7 +115,7 @@ export default function HeaderMain() {
               <h2 className="text-[15px] sm:text-[18px] font-semibold">
                 Crafted
               </h2>
-              <div className="relative w-[38px] h-[37px] sm:w-[48px] sm:h-[46px] md">
+              <div className="relative w-[38px] h-[36px] sm:w-[46px] sm:h-[44px] ">
                 <Image
                   src="/Crafted_Treasure_Logo.png"
                   alt="logo"
@@ -153,7 +152,7 @@ export default function HeaderMain() {
                     className="absolute right-[10px] top-[5px] z-20"
                     onClick={handleInputValueSearch}
                   >
-                    <SearchSVG />
+                    <SearchSVG className="text-accentMain" />
                   </button>
                 </div>
               </div>
@@ -165,12 +164,12 @@ export default function HeaderMain() {
                   className="sm:hidden flex justify-center items-center"
                   onClick={() => setIsMobileSearchOpen(true)}
                 >
-                  <SearchSVG />
+                  <SearchSVG className="text-accentMain" />
                 </button>
               )}
             </div>
             <button type="button">
-              <GroceryCartSVG />
+              <GroceryCartSVG className="text-accentMain" />
             </button>
           </div>
 
@@ -182,10 +181,11 @@ export default function HeaderMain() {
             >
               <nav
                 ref={mobileMenuRef}
-                className="absolute top-[60px] left-0 w-full bg-white p-[10px] z-50 rounded-xl border border-accentMain"
+                className="absolute top-[60px] left-0 w-full  bg-white  p-[10px] z-50 rounded-xl border border-accentMain"
+                style={{ margin: "0 6px", width: "calc(100% - 12px)" }}
                 onClick={(e) => e.stopPropagation()}
               >
-                <ul className="flex flex-col">
+                <ul className="flex flex-col text-base leading-[21px] ">
                   {navLinks.map(({ href, label }) => (
                     <li key={href}>
                       <Link
@@ -230,7 +230,7 @@ export default function HeaderMain() {
             className="absolute right-[28px] top-[5px] z-20"
             onClick={handleInputValueSearch}
           >
-            <SearchSVG />
+            <SearchSVG className="text-accentMain" />
           </button>
         </div>
       )}
