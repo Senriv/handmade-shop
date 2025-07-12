@@ -227,10 +227,12 @@ export default function FooterMain() {
                 height={133}
                 className="md:w-[144px] md:h-[138px]"
               />
+
               <h2 className="text-[24px] font-bold mt-[15px] leading-[29px]">
                 Crafted
               </h2>
               <h3 className="text-[16px] font-semibold mt-[-2px] leading-[19px]">
+
                 -Treasures-
               </h3>
             </div>
@@ -301,11 +303,13 @@ export default function FooterMain() {
               </div>
             </div>
           </div>
+
           <div className="flex gap-[62px] justify-end pb-[6px]">
             <p className="text-[14px] text-lightGray cursor-pointer leading-[16px]">
               Product Policy
             </p>
             <p className="text-[14px] text-lightGray leading-[16px]">
+
               &copy; 2025 Shop. All Rights Reserved.
             </p>
           </div>
