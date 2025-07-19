@@ -156,9 +156,12 @@ export default function FooterMain() {
             </div>
           </div>
           <div className="flex justify-between pb-[6px]">
-            <p className="text-[10px] text-lightGray leading-[12px] active:text-primary700">
+            <a
+              href="#"
+              className="text-[10px] text-lightGray leading-[12px] active:text-primary700"
+            >
               Product Policy
-            </p>
+            </a>
             <p className="text-[10px] text-lightGray leading-[12px]">
               &copy; 2025 Shop. All Rights Reserved.
             </p>
@@ -308,9 +311,12 @@ export default function FooterMain() {
           </div>
 
           <div className="flex gap-[62px] justify-end pb-[12px]">
-            <p className="text-[14px] text-lightGray cursor-pointer leading-[16px] hover:text-primary500 active:text-primary700">
+            <a
+              href="#"
+              className="text-[14px] text-lightGray cursor-pointer leading-[16px] hover:text-primary500 active:text-primary700"
+            >
               Product Policy
-            </p>
+            </a>
             <p className="text-[14px] text-lightGray leading-[16px]">
               &copy; 2025 Shop. All Rights Reserved.
             </p>
