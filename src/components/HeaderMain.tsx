@@ -75,7 +75,7 @@ export default function HeaderMain() {
               className="block group sm:hidden hover:fill-red"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              <BurgerSvg className="w-8 h-8  fill-accentMain group-hover:opacity-100 transition-opacity duration-200" />
+              <BurgerSvg className="w-8 h-8  fill-primary500 group-hover:opacity-100 transition-opacity duration-200" />
             </button>
 
             {/* tablet/desktop nav */}
@@ -87,11 +87,11 @@ export default function HeaderMain() {
                       href={href}
                       className={`${
                         pathname === href ? "font-bold" : ""
-                      } relative hover:text-accentMain transition-colors`}
+                      } relative hover:text-primary500 transition-colors`}
                     >
                       {label}
                       {pathname === href && (
-                        <span className="absolute left-0 -bottom-[29px] w-full h-[3px] bg-accentMain" />
+                        <span className="absolute left-0 -bottom-[29px] w-full h-[3px] bg-primary500" />
                       )}
                     </Link>
                   </li>
@@ -104,7 +104,7 @@ export default function HeaderMain() {
           <div className="flex-none z-10 ">
             <div
               className={`flex  items-center gap-[2px] transition-colors cursor-pointer ${
-                isActive ? "text-accentMainActive" : "hover:text-accentMain"
+                isActive ? "text-primary700" : "hover:text-primary500"
               }`}
               onMouseDown={() => setIsActive(true)}
               onMouseUp={() => setIsActive(false)}
@@ -145,14 +145,14 @@ export default function HeaderMain() {
                     onBlur={handleBlur}
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
-                    className="w-full h-[32px] box-border border border-accentMain  rounded-[6px] px-2 pr-8 text-sm leading-none outline-none placeholder:text-placeholderPrimary"
+                    className="w-full h-[32px] box-border border border-primary500  rounded-[6px] px-2 pr-8 text-sm leading-none outline-none placeholder:text-textTertiary"
                   />
                   <button
                     type="button"
                     className="absolute right-[10px] top-[5px] z-20"
                     onClick={handleInputValueSearch}
                   >
-                    <SearchSVG className="text-accentMain" />
+                    <SearchSVG className="text-primary500" />
                   </button>
                 </div>
               </div>
@@ -164,12 +164,12 @@ export default function HeaderMain() {
                   className="sm:hidden flex justify-center items-center"
                   onClick={() => setIsMobileSearchOpen(true)}
                 >
-                  <SearchSVG className="text-accentMain" />
+                  <SearchSVG className="text-primary500" />
                 </button>
               )}
             </div>
             <button type="button">
-              <GroceryCartSVG className="text-accentMain" />
+              <GroceryCartSVG className="text-primary500" />
             </button>
           </div>
 
@@ -181,7 +181,7 @@ export default function HeaderMain() {
             >
               <nav
                 ref={mobileMenuRef}
-                className="absolute top-[60px] left-0 w-full  bg-white  p-[10px] z-50 rounded-xl border border-accentMain"
+                className="absolute top-[60px] left-0 w-full  bg-white  p-[10px] z-50 rounded-xl border border-primary500"
                 style={{ margin: "0 6px", width: "calc(100% - 12px)" }}
                 onClick={(e) => e.stopPropagation()}
               >
@@ -220,9 +220,9 @@ export default function HeaderMain() {
             onFocus={() => setIsInputFocused(true)}
             onBlur={() => setIsInputFocused(false)}
             onChange={(e) => setSearchValue(e.target.value)}
-            className={`w-full h-[34px] rounded-[6px] px-2 pr-8 text-sm placeholder:text-placeholderPrimary outline-none
+            className={`w-full h-[34px] rounded-[6px] px-2 pr-8 text-sm placeholder:text-textTertiary outline-none
     border
-    ${isInputFocused ? "border-accentMain " : "border-accentMainActive "}
+    ${isInputFocused ? "border-primary500 " : "border-primary700 "}
   `}
           />
           <button
@@ -230,7 +230,7 @@ export default function HeaderMain() {
             className="absolute right-[28px] top-[5px] z-20"
             onClick={handleInputValueSearch}
           >
-            <SearchSVG className="text-accentMain" />
+            <SearchSVG className="text-primary500" />
           </button>
         </div>
       )}

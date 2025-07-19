@@ -61,7 +61,7 @@ export default function ShopPage() {
         />
       </section>
       <Link href="/shop/r8KlsnF93JdWqmXz4aTp7HcB">
-        <div className="p-3 hover:bg-mediumGray ">
+        <div className="p-3 hover:bg-textSecondary ">
           Click me and You&apos;ll see the magic
         </div>
       </Link>

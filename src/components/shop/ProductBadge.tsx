@@ -1,6 +1,6 @@
 import React from "react";
 
-type BadgeColor = "bg-labelSale" | "bg-accentMain";
+type BadgeColor = "bg-labelSale" | "bg-primary500";
 
 interface ProductBadgeProps {
   text: string;

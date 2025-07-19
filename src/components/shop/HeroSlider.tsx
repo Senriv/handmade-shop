@@ -36,14 +36,14 @@
 //                 Welcome to Shop
 //               </p>
 //               <h1 className="text-[70px] font-bold leading-[1] uppercase mb-[5px]">
-//                 HANDMADE WITH <span className="text-accentMain">LOVE</span>
+//                 HANDMADE WITH <span className="text-primary500">LOVE</span>
 //               </h1>
-//               <p className="max-w-[584px] w-full text-[14px] font-bold leading-[1.71] text-mediumGray mb-[45px]">
+//               <p className="max-w-[584px] w-full text-[14px] font-bold leading-[1.71] text-textSecondary mb-[45px]">
 //                 Explore our curated collection of handcrafted goods that bring
 //                 warmth and uniqueness to your life.
 //               </p>
 //               <button
-//                 className="font-bold leading-[1.25] uppercase text-white py-2 px-[26px] bg-accentMain rounded-md"
+//                 className="font-bold leading-[1.25] uppercase text-white py-2 px-[26px] bg-primary500 rounded-md"
 //                 type="button"
 //               >
 //                 SHOP NOW
@@ -65,14 +65,14 @@
 //                 Welcome to Shop
 //               </p>
 //               <h1 className="text-[70px] font-bold leading-[1] uppercase mb-[5px]">
-//                 HANDMADE WITH <span className="text-accentMain">LOVE</span>
+//                 HANDMADE WITH <span className="text-primary500">LOVE</span>
 //               </h1>
-//               <p className="max-w-[584px] w-full text-[14px] font-bold leading-[1.71] text-mediumGray mb-[45px]">
+//               <p className="max-w-[584px] w-full text-[14px] font-bold leading-[1.71] text-textSecondary mb-[45px]">
 //                 Explore our curated collection of handcrafted goods that bring
 //                 warmth and uniqueness to your life.
 //               </p>
 //               <button
-//                 className="font-bold leading-[1.25] uppercase text-white py-2 px-[26px] bg-accentMain rounded-md"
+//                 className="font-bold leading-[1.25] uppercase text-white py-2 px-[26px] bg-primary500 rounded-md"
 //                 type="button"
 //               >
 //                 SHOP NOW
@@ -94,14 +94,14 @@
 //                 Welcome to Shop
 //               </p>
 //               <h1 className="text-[70px] font-bold leading-[1] uppercase mb-[5px]">
-//                 HANDMADE WITH <span className="text-accentMain">LOVE</span>
+//                 HANDMADE WITH <span className="text-primary500">LOVE</span>
 //               </h1>
-//               <p className="max-w-[584px] w-full text-[14px] font-bold leading-[1.71] text-mediumGray mb-[45px]">
+//               <p className="max-w-[584px] w-full text-[14px] font-bold leading-[1.71] text-textSecondary mb-[45px]">
 //                 Explore our curated collection of handcrafted goods that bring
 //                 warmth and uniqueness to your life.
 //               </p>
 //               <button
-//                 className="font-bold leading-[1.25] uppercase text-white py-2 px-[26px] bg-accentMain rounded-md"
+//                 className="font-bold leading-[1.25] uppercase text-white py-2 px-[26px] bg-primary500 rounded-md"
 //                 type="button"
 //               >
 //                 SHOP NOW

@@ -11,18 +11,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        textMain: "#3d3d3d",
-        accentMainLight: "#ECFBFB",
-        accentMain: "#37cece",
-        accentMainActive: "#2CA7A7",
-        mint: "#ecfbfb",
-        defaultGrey: "#EAEAEA",
-        lightGray: "#acacac",
-        mediumGray: "#727272",
-        placeholderPrimary: "#A5A5A5",
-        error: "#F03800",
-        labelSale: "#ce373a",
+        background: "#FFFFFF",
+        primary100: "#ECFBFB",
+        primary500: "#37cece",
+        primary700: "#2CA7A7",
+        surface: "#EAEAEA",
 
+        textPrimary: "#3d3d3d",
+        textSecondary: "#727272",
+        textTertiary: "#A5A5A5",
+
+        error: "#F03800",
+
+        mint: "#ecfbfb",
+        lightGray: "#acacac",
+        labelSale: "#ce373a",
         accentBg: "rgba(55, 206, 206, 0.1)",
       },
     },

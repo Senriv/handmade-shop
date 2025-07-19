@@ -30,7 +30,7 @@ const ProductItem = ({ selectedCategory }: ProductItemProps) => {
 
         <div className="absolute top-[17px] right-[6px]">
           {selectedCategory === "Bestseller" && (
-            <ProductBadge text="Bestseller" bgColor="bg-accentMain" />
+            <ProductBadge text="Bestseller" bgColor="bg-primary500" />
           )}
         </div>
       </div>

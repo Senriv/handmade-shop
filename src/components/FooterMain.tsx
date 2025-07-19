@@ -27,7 +27,7 @@ export default function FooterMain() {
               <div className="flex h-10 w-full relative">
                 <input
                   className={`outline-none py-3 px-4 text-[14px] flex-grow border border-r-0 rounded-l-[6px] ${
-                    error ? "border-error" : "border-accentMain"
+                    error ? "border-error" : "border-primary500"
                   }`}
                   id="email"
                   type="email"
@@ -37,7 +37,7 @@ export default function FooterMain() {
                 />
                 <button
                   className={`text-white text-[18px] font-bold leading-[0.88] py-3 pl-[22px] pr-[27px] ${
-                    error ? "bg-lightGray cursor-not-allowed" : "bg-accentMain"
+                    error ? "bg-lightGray cursor-not-allowed" : "bg-primary500"
                   } rounded-r-[6px]`}
                   type="button"
                   onClick={handleJoin}
@@ -65,7 +65,7 @@ export default function FooterMain() {
             {/* 4 coloums  */}
             <ul className="flex flex-row justify-between w-full ">
               {/* categories */}
-              <li className="">
+              <li>
                 <ul className="flex flex-col gap-[6px]">
                   <li>
                     <p className="text-[18px] font-bold leading-[16px]">
@@ -73,37 +73,41 @@ export default function FooterMain() {
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
+                    <p className="text-[14px] leading-[1.29] active:text-primary700 ">
                       Jewelry
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
+                    <p className="text-[14px] leading-[1.29] active:text-primary700 ">
                       Knitted Items
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
+                    <p className="text-[14px] leading-[1.29] active:text-primary700 ">
                       Candles
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
+                    <p className="text-[14px] leading-[1.29] active:text-primary700 ">
                       Gift Sets
                     </p>
                   </li>
                 </ul>
               </li>
               {/* logo */}
-              <li className="flex flex-col items-center group   active:text-accentMainActive ">
+              <li className="flex flex-col items-center group   active:text-primary700 ">
                 <Image
                   src="/logo/Crafted_Tresaures.png"
                   alt="logo"
                   width={70}
                   height={67}
                 />
-                <h2 className="text-[11px] font-bold mt-[7px]">Crafted</h2>
-                <h3 className="text-[7px] mt-[2px]">-Treasures-</h3>
+                <h2 className="text-[11px] font-bold leading-[14px] mt-[7px]">
+                  Crafted
+                </h2>
+                <h3 className="text-[7px] leading-[8px] mt-[-1px]">
+                  -Treasures-
+                </h3>
               </li>
               {/* information */}
               <li>
@@ -114,17 +118,17 @@ export default function FooterMain() {
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
+                    <p className="text-[14px] leading-[1.29] active:text-primary700 ">
                       About Us
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[1.29] active:text-accentMainActive ">
+                    <p className="text-[14px] leading-[1.29] active:text-primary700 ">
                       Contact Us
                     </p>
                   </li>
                   <li>
-                    <p className="text-[14px] leading-[14px] active:text-accentMainActive ">
+                    <p className="text-[14px] leading-[14px] active:text-primary700 ">
                       Shipping &amp;
                       <br /> Returning
                     </p>
@@ -138,7 +142,7 @@ export default function FooterMain() {
                 <InstagramSvg
                   width={24}
                   height={24}
-                  className="text-accentMain active:text-accentMainActive"
+                  className="text-primary500 active:text-primary700"
                 />
               </Link>
 
@@ -146,15 +150,18 @@ export default function FooterMain() {
                 <FacebookSvg
                   width={20}
                   height={24}
-                  className="text-accentMain active:text-accentMainActive"
+                  className="text-primary500 active:text-primary700"
                 />
               </Link>
             </div>
           </div>
           <div className="flex justify-between pb-[6px]">
-            <p className="text-[10px] text-lightGray leading-[12px]">
+            <a
+              href="#"
+              className="text-[10px] text-lightGray leading-[12px] active:text-primary700"
+            >
               Product Policy
-            </p>
+            </a>
             <p className="text-[10px] text-lightGray leading-[12px]">
               &copy; 2025 Shop. All Rights Reserved.
             </p>
@@ -174,22 +181,22 @@ export default function FooterMain() {
                   </p>
                 </li>
                 <li>
-                  <p className="text-[14px]  leading-[30px] hover:text-accentMain active:text-accentMainActive cursor-pointer">
+                  <p className="text-[14px]  leading-[30px] hover:text-primary500 active:text-primary700 cursor-pointer">
                     Jewelry
                   </p>
                 </li>
                 <li>
-                  <p className="text-[14px]  leading-[30px] hover:text-accentMain active:text-accentMainActive cursor-pointer">
+                  <p className="text-[14px]  leading-[30px] hover:text-primary500 active:text-primary700 cursor-pointer">
                     Knitted Items
                   </p>
                 </li>
                 <li>
-                  <p className="text-[14px] leading-[30px] hover:text-accentMain active:text-accentMainActive cursor-pointer">
+                  <p className="text-[14px] leading-[30px] hover:text-primary500 active:text-primary700 cursor-pointer">
                     Candles
                   </p>
                 </li>
                 <li>
-                  <p className="text-[14px] leading-[30px] hover:text-accentMain active:text-accentMainActive cursor-pointer">
+                  <p className="text-[14px] leading-[30px] hover:text-primary500 active:text-primary700 cursor-pointer">
                     Gift Sets
                   </p>
                 </li>
@@ -202,24 +209,24 @@ export default function FooterMain() {
                   </p>
                 </li>
                 <li>
-                  <p className="text-[14px]  leading-[30px] hover:text-accentMain active:text-accentMainActive cursor-pointer">
+                  <p className="text-[14px]  leading-[30px] hover:text-primary500 active:text-primary700 cursor-pointer">
                     About Us
                   </p>
                 </li>
                 <li>
-                  <p className="text-[14px]  leading-[30px] hover:text-accentMain active:text-accentMainActive cursor-pointer">
+                  <p className="text-[14px]  leading-[30px] hover:text-primary500 active:text-primary700 cursor-pointer">
                     Contact Us
                   </p>
                 </li>
                 <li>
-                  <p className="text-[14px] leading-[30px] hover:text-accentMain active:text-accentMainActive cursor-pointer">
+                  <p className="text-[14px] leading-[30px] hover:text-primary500 active:text-primary700 cursor-pointer">
                     Shipping & Returns
                   </p>
                 </li>
               </ul>
             </div>
             {/* logo */}
-            <div className=" flex flex-col items-center group  hover:text-accentMain active:text-accentMainActive cursor-pointer">
+            <div className=" flex flex-col items-center group  hover:text-primary500 active:text-primary700 cursor-pointer">
               <Image
                 src="/logo/Crafted_Tresaures.png"
                 alt="logo"
@@ -232,7 +239,6 @@ export default function FooterMain() {
                 Crafted
               </h2>
               <h3 className="text-[16px] font-semibold mt-[-2px] leading-[19px]">
-
                 -Treasures-
               </h3>
             </div>
@@ -247,7 +253,7 @@ export default function FooterMain() {
                   <div className="flex h-10 relative">
                     <input
                       className={`outline-none py-3 px-4 text-[14px] flex-grow border border-r-0 rounded-l-[6px] ${
-                        error ? "border-error" : "border-accentMain"
+                        error ? "border-error" : "border-primary500"
                       }`}
                       type="email"
                       placeholder="email@gmail.com "
@@ -258,7 +264,7 @@ export default function FooterMain() {
                       className={`text-white text-[18px] font-bold leading-[0.88] py-3 pl-[22px] pr-[27px] ${
                         error
                           ? "bg-lightGray cursor-not-allowed"
-                          : "bg-accentMain"
+                          : "bg-primary500"
                       } rounded-r-[6px]`}
                       type="button"
                       onClick={handleJoin}
@@ -289,7 +295,7 @@ export default function FooterMain() {
                   <InstagramSvg
                     width={30}
                     height={30}
-                    className="text-accentMain active:text-accentMainActive"
+                    className="text-primary500 active:text-primary700"
                   />
                 </Link>
 
@@ -297,19 +303,21 @@ export default function FooterMain() {
                   <FacebookSvg
                     width={25}
                     height={30}
-                    className="text-accentMain active:text-accentMainActive"
+                    className="text-primary500 active:text-primary700"
                   />
                 </Link>
               </div>
             </div>
           </div>
 
-          <div className="flex gap-[62px] justify-end pb-[6px]">
-            <p className="text-[14px] text-lightGray cursor-pointer leading-[16px]">
+          <div className="flex gap-[62px] justify-end pb-[12px]">
+            <a
+              href="#"
+              className="text-[14px] text-lightGray cursor-pointer leading-[16px] hover:text-primary500 active:text-primary700"
+            >
               Product Policy
-            </p>
+            </a>
             <p className="text-[14px] text-lightGray leading-[16px]">
-
               &copy; 2025 Shop. All Rights Reserved.
             </p>
           </div>

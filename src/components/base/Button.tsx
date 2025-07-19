@@ -13,7 +13,7 @@ const Button: FC<ButtonProps> = ({ children, onClick, className }) => {
     <button
       type="button"
       onClick={onClick}
-      className={` rounded-md bg-accentMain text-white font-bold uppercase ${
+      className={` rounded-md bg-primary500 text-white font-bold uppercase ${
         className ?? ""
       }`}
     >

@@ -29,7 +29,7 @@ const PaletteSelector = ({ isHovered }: PaletteSelectorProps) => {
     <div
       className={`flex  flex-row  items-center gap-[1px] h-[8px] sm:h-[14px] sm:gap-[2px] ${
         isHovered ? "w-fit" : "w-[29px] sm:w-[50px]"
-      } rounded-[59px] bg-accentMainLight pr-[2px] cursor-pointer`}
+      } rounded-[59px] bg-primary100 pr-[2px] cursor-pointer`}
     >
       {displayedPalette.map((color, index) => (
         <div
@@ -44,7 +44,7 @@ const PaletteSelector = ({ isHovered }: PaletteSelectorProps) => {
             className="w-[9px] h-[9px] sm:w-[14px] sm:h-[14px]"
             fillColor={color}
             outerStrokeColor={
-              selectedColor === color ? "text-accentMain" : "text-defaultGrey"
+              selectedColor === color ? "text-primary500" : "text-surface"
             }
           />
         </div>
