@@ -15,10 +15,10 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({ className }) => {
   return (
     <button
       type="button"
-      className={` p-[11px] bg-white border-2  border-accentMain rounded-xl ${className}`}
+      className={` p-[11px] bg-white border-2  border-primary500 rounded-xl ${className}`}
       onClick={handleAddToCart}
     >
-      <PlusSVG className="text-accentMain" />
+      <PlusSVG className="text-primary500" />
     </button>
   );
 };

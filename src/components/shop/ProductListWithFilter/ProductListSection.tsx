@@ -33,8 +33,8 @@ const ProductListSection = ({
               <button
                 className={`${
                   selectedCategory === category
-                    ? "text-accentMain border-b-[2px] border-accentMain pb-[7px]"
-                    : "text-textMain"
+                    ? "text-primary500 border-b-[2px] border-primary500 pb-[7px]"
+                    : "text-textPrimary"
                 } text-[15px] font-bold`}
                 type="button"
                 onClick={() => setSelectedCategory(category)}
@@ -55,8 +55,8 @@ const ProductListSection = ({
               <FilterDownSVG
                 className={
                   sortOrder === "desc"
-                    ? "text-accentMainActive"
-                    : "text-mediumGray"
+                    ? "text-primary700"
+                    : "text-textSecondary"
                 }
               />
             </button>
@@ -69,9 +69,7 @@ const ProductListSection = ({
             >
               <FilterUpSVG
                 className={
-                  sortOrder === "asc"
-                    ? "text-accentMainActive"
-                    : "text-mediumGray"
+                  sortOrder === "asc" ? "text-primary700" : "text-textSecondary"
                 }
               />
             </button>
