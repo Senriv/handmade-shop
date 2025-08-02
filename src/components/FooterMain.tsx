@@ -137,7 +137,7 @@ export default function FooterMain() {
               </li>
             </ul>
             {/* social media */}
-            <div className="flex  flex-row gap-3 mt-5 justify-start mb-[14px] sm:hidden">
+            <div className="flex  flex-row gap-3 mt-5 justify-end mb-[14px] sm:hidden">
               <Link href="https://www.instagram.com">
                 <InstagramSvg
                   width={24}
