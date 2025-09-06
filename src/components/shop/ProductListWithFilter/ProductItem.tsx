@@ -6,10 +6,11 @@ import ProductBadge from "../ProductBadge";
 import { useHover } from "@/hooks/useHover";
 
 type ProductItemProps = {
-  selectedCategory: string;
+  selectedCategory?: string;
+  oldPrice?: boolean;
 };
 
-const ProductItem = ({ selectedCategory }: ProductItemProps) => {
+const ProductItem = ({ selectedCategory, oldPrice }: ProductItemProps) => {
   const [hoverRef, isHovered] = useHover<HTMLLIElement>();
   return (
     <li
@@ -39,9 +40,16 @@ const ProductItem = ({ selectedCategory }: ProductItemProps) => {
           <p className="text-[10px] sm:text-[17px] md:text-[18px] font-bold">
             Silver Bracelet
           </p>
-          <p className="text-[9px] sm:text-[15px] md:text-[16px] font-semibold">
-            $1049.00
-          </p>
+          <div className="flex gap-[18px]">
+            <p className="text-[9px] sm:text-[15px] md:text-[16px] font-semibold">
+              $1049.00
+            </p>
+            {oldPrice && (
+              <p className="text-[9px] sm:text-[15px] md:text-[16px] font-semibold text-surface line-through">
+                $1500.00
+              </p>
+            )}
+          </div>
         </div>
         <div className="flex items-end">
           <PaletteSelector isHovered={isHovered} />

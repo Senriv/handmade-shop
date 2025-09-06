@@ -1,130 +1,162 @@
 "use client";
+import { useRouter } from "next/navigation";
+
 import Image from "next/image";
-import { useReducer } from "react";
-import BlueSVG from "@/assets/temporarry/blue.svg";
-import GreenSVG from "@/assets/temporarry/green.svg";
-import RainbowSVG from "@/assets/temporarry/rainbow.svg";
-import RedSVG from "@/assets/temporarry/red.svg";
+
+import { useCounter } from "@/hooks/productItem/PurchasesQuantety";
+
+import SlideControl from "@/components/base/SlideControl";
+
+import ArrowBackSVG from "@/assets/main/default/arrow_back_page.svg";
+import ZoomSVG from "@/assets/main/default/zoom_product_card.svg";
+
 import MinusSVG from "@/assets/ProductCard/minus.svg";
 import PlusSVG from "@/assets/ProductCard/plus.svg";
 
-type State = {
-  amount: number;
-};
-
-type Action = { type: "increment" } | { type: "decrement" };
+import ProductItem from "@/components/shop/ProductListWithFilter/ProductItem";
 
 const ProductCard = () => {
-  // Product quantity
+  // for navigation
+  const router = useRouter();
 
-  const initialState = { amount: 0 };
-  const [state, dispatch] = useReducer(reducer, initialState);
-  function reducer(state: State, action: Action) {
-    switch (action.type) {
-      case "increment":
-        return { amount: state.amount + 1 };
-      case "decrement":
-        return { amount: Math.max(0, state.amount - 1) };
-      default:
-        return state;
+  // purchases counter
+  const { value: items, increment, decrement } = useCounter(0);
+
+  // return to the previous page
+  const handlePageBack = () => {
+    if (window.history.length > 1) {
+      router.back();
+    } else {
+      router.push("/");
     }
-  }
+  };
+
   return (
-    <section className="my-20">
-      <div className="flex flex-row gap-11">
-        <Image
-          src="/temporarry/Product.jpg"
-          alt="product card"
-          width={610}
-          height={610}
-          className="shrink-0 grow-0 object-cover block"
-          style={{ maxWidth: "none", height: "610px", width: "610px" }}
-        />
-        <div className="flex flex-col">
-          <h1 className="text-[28px] font-bold leading-[16px] mb-6">
+    <section className="mt-5 sm:mt-[38px] ">
+      {/* button back */}
+      <button
+        type="button"
+        onClick={handlePageBack}
+        className="flex gap-[6px] items-center text-[15px] text-primary500 mb-[30px] md:mb-[34px]"
+      >
+        <ArrowBackSVG /> Back
+      </button>
+      <div className="flex flex-col sm:flex-row sm:gap-[60px] md:gap-[43px]">
+        {/* main iamge */}
+
+        <div className="relative  min-w-[358px] max-w-[430px] min-h-[358px] max-h-[430px] sm:min-w-[430px] sm:max-w-[630px] sm:min-h-[430px] sm:max-h-[630px]  rounded-lg overflow-hidden  mb-[22px] aspect-square md:w-[630px] md:h-[630px]">
+          <Image
+            src="/images/default/Item_plug.jpg"
+            alt="item image"
+            fill
+            className="object-cover"
+          />
+          <button
+            type="button"
+            className="p-1 absolute top-[15px] right-[15px] hidden"
+          >
+            <ZoomSVG />
+          </button>
+          <SlideControl direction="left" />
+          <SlideControl direction="right" />
+        </div>
+        {/* description */}
+        <div className="flex-1">
+          <h1 className="text-[20px] font-bold leading-[18px] mb-5 sm:text-[28px] sm:leading-[24px] sm:mb-[30px]">
             Vintage Bronze Pendant with Amber
           </h1>
-          <h2 className="text-[22px] font-bold leading-[16px]">$129.00</h2>
-          <div className="border-[0.3px] border-primary500 w-[528px] my-[18px]" />
-          <div className="flex flex-row gap-[68px] mb-4">
-            <h2 className="font-semibold text-[15px] leading-[16px] whitespace-nowrap">
+          <h2 className="text-[17px] font-bold leading-[16px] mb-3 sm:text-[22px] sm:leading-[18px]">
+            $129.00
+          </h2>
+          <span className="flex h-[1px] w-full bg-primary500"></span>
+          {/* short descr */}
+          <div className="mt-4 flex justify-between items-baseline mb-[30px]">
+            <p className="text-[14px] font-bold leading-[16px]">
               Short Description:
-            </h2>
-            <p className="text-textSecondary text-[14px] leading-[23.94px]">
+            </p>
+            <p className="text-[14px] leading-[24px] xs:w-[258px] sm:w-[315px] md:w-[403px]">
               Exquisite handcrafted pendant featuring a large natural amber
               stone set in an ornate bronze frame inspired by the Baroque era.
             </p>
           </div>
-          <div className="flex justify-between items-end mb-9">
-            <ul className="flex flex-col gap-4">
-              <li className="flex flex-row gap-1 text-[15px] leading-[16px]">
-                <p className="text-lightGray">Categories:</p>
-                <p className="text-textSecondary">Jewelry</p>
-              </li>
-              <li className="flex flex-row gap-1 text-[15px] leading-[16px]">
-                <p className="text-lightGray">Tags:</p>
-                <p className="text-textSecondary">Metal</p>
-              </li>
-              <li className="flex flex-row gap-1 text-[15px] leading-[16px]">
-                <p className="text-lightGray">Size:</p>
-                <p className="text-textSecondary">Metal</p>
-              </li>
-              <li className="flex flex-row gap-1 text-[15px] leading-[16px]">
-                <p className="text-lightGray">Color:</p>
-                <div className="flex flex-row">
-                  <BlueSVG />
-                  <GreenSVG />
-                  <RainbowSVG />
-                  <RedSVG />
-                </div>
-              </li>
-            </ul>
-            <div className="flex flex-col items-end gap-2">
-              <div className="flex flex-row gap-[22px]">
-                <div className="flex flex-row items-center gap-[6px] h-[41px] border border-primary500 rounded-md">
-                  <button
-                    type="button"
-                    className="pt-[6px] pr-[10px] pb-[7px] pl-[10px]"
-                    onClick={() => dispatch({ type: "decrement" })}
-                  >
-                    <MinusSVG />
-                  </button>
-                  <p>{state.amount}</p>
-                  <button
-                    type="button"
-                    className="pt-[6px] pr-[10px] pb-[7px] pl-[10px]"
-                    onClick={() => dispatch({ type: "increment" })}
-                  >
-                    <PlusSVG />
-                  </button>
-                </div>
-                <button
-                  type="button"
-                  className="h-[41px] flex items-center border border-primary500 rounded-md py-[9px] px-[28px] font-bold text-primary500 whitespace-nowrap"
-                >
-                  SHOP NOW
-                </button>
-              </div>
-              <p className="text-[15px] text-primary500 font-semibold">
+          <div className="flex flex-row gap-[30px] justify-end mb-5 md:hidden">
+            {/* quantity */}
+            <div className="w-[111px] h-[41px] border border-primary500 rounded-md px-[5px] py-[3px] flex justify-between items-center ">
+              <button
+                type="button"
+                className="p-[13px]"
+                onClick={decrement}
+                disabled={items === 0}
+              >
+                <MinusSVG />
+              </button>
+              <p>{items}</p>
+              <button type="button" className="p-[11px]" onClick={increment}>
+                <PlusSVG />
+              </button>
+            </div>
+            {/* add to cart */}
+            <div>
+              <button
+                type="button"
+                className="w-[149px] h-[41px] border border-primary500 rounded-md text-[14px] font-bold uppercase text-primary500"
+              >
+                Add to cart
+              </button>
+              <p className="mt-[7px] text-primary500 text-[15px]">
                 Free shipping from $85
               </p>
             </div>
           </div>
-          <div className="text-[14px] leading-[24px] text-textSecondary">
-            <ul className="list-disc pl-5">
-              <li>Materials: Bronze, natural amber</li>
-              <li>Technique: Hand-casting and engraving</li>
-              <li>Style: Vintage, Baroque</li>
-              <li>Pendant size: approximately 5 cm x 3 cm</li>
-              <li>Chain length: 50 cm</li>
+          {/* info */}
+          <div className="flex flex-col gap-3 mb-[30px] md:hidden">
+            <ul className="flex flex-col gap-3">
+              <li className="flex gap-1">
+                <p className="text-lightGray text-[15px]">Categories: </p>
+                <p className="text-[15px]">Jewelry</p>
+              </li>
+              <li className="flex gap-1">
+                <p className="text-lightGray text-[15px]">Material: </p>
+                <p className="text-[15px]">Metal</p>
+              </li>
+              <li className="flex gap-1">
+                <p className="text-lightGray text-[15px]">Size: </p>
+                <p className="text-[15px]">Оne size</p>
+              </li>
             </ul>
-            <h3>Features:</h3>
-            <ul>
-              <li>✓ Handmade</li>
-              <li>✓ Unique amber patterns</li>
-              <li>✓ Perfect gift for lovers of classic beauty</li>
+            <div className="flex gap-1">
+              <p className="text-lightGray text-[15px]">Color: </p>
+              <div>ColorPeaker!!!!!</div>
+            </div>
+          </div>
+
+          {/* mobile full description */}
+          <div className="leading-[18px] text-[15px] mb-[30px] sm:hidden">
+            <ul className="flex flex-col">
+              <li className="flex ">
+                <p>Pendant size:</p>
+                <p>approximately 5 cm x 3 cm</p>
+              </li>
+              <li className="flex ">
+                <p>Chain length:</p>
+                <p> 50 cm</p>
+              </li>
+              <li className="flex ">
+                <p>Technique:</p>
+                <p>Hand-casting and engraving</p>
+              </li>
+              <li className="flex ">
+                <p>Style:</p>
+                <p>Vintage, Baroque</p>
+              </li>
+              <li>
+                <p>Features:</p>
+                <p>✓ Handmade</p>
+                <p>✓ Unique amber patterns</p>
+                <p>✓ Perfect gift for lovers of classic beauty</p>
+              </li>
             </ul>
-            <p>
+            <p className="mt-6">
               Exquisite handcrafted pendant featuring a large natural amber
               stone set in an ornate bronze frame inspired by the Baroque era.
               The warm hues of genuine amber create a captivating play of light,
@@ -132,6 +164,179 @@ const ProductCard = () => {
               complements the vintage design, adding an authentic antique charm.
             </p>
           </div>
+          {/* desctop description */}
+          <div className="md:flex flex-col hidden">
+            <div className="flex justify-between items-center">
+              {/* left side */}
+              <div className="flex flex-col gap-4">
+                <ul className="flex flex-col gap-4">
+                  <li className="flex">
+                    <p>Categories: </p>
+                    <p>Jewelry</p>
+                  </li>
+                  <li className="flex">
+                    <p>Material: </p>
+                    <p>Metal</p>
+                  </li>
+                  <li className="flex">
+                    <p>Size: </p>
+                    <p>Оne size</p>
+                  </li>
+                </ul>
+                <div className="flex">
+                  <p>Color: </p>
+                  <div>ColorPeaker!!!!!</div>
+                </div>
+              </div>
+              {/* right side */}
+              <div>
+                <div className="flex gap-[34px]">
+                  <div className="w-[111px] h-[41px] border border-primary500 rounded-md px-[5px] py-[3px] flex justify-between items-center ">
+                    <button
+                      type="button"
+                      className="p-[13px]"
+                      onClick={decrement}
+                      disabled={items === 0}
+                    >
+                      <MinusSVG />
+                    </button>
+                    <p>{items}</p>
+                    <button
+                      type="button"
+                      className="p-[11px]"
+                      onClick={increment}
+                    >
+                      <PlusSVG />
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                      type="button"
+                      className="w-[149px] h-[41px] border border-primary500 rounded-md text-[14px] font-bold uppercase text-primary500"
+                    >
+                      Add to cart
+                    </button>
+                    <p className="mt-[7px] text-primary500 text-[15px]">
+                      Free shipping from $85
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* full description */}
+            <div className="leading-6">
+              <ul className="flex flex-col">
+                <li className="flex ">
+                  <p>Pendant size:</p>
+                  <p>approximately 5 cm x 3 cm</p>
+                </li>
+                <li className="flex ">
+                  <p>Chain length:</p>
+                  <p> 50 cm</p>
+                </li>
+                <li className="flex ">
+                  <p>Technique:</p>
+                  <p>Hand-casting and engraving</p>
+                </li>
+                <li className="flex ">
+                  <p>Style:</p>
+                  <p>Vintage, Baroque</p>
+                </li>
+                <li>
+                  <p>Features:</p>
+                  <p>✓ Handmade</p>
+                  <p>✓ Unique amber patterns</p>
+                  <p>✓ Perfect gift for lovers of classic beauty</p>
+                </li>
+              </ul>
+              <p className="mt-6">
+                Exquisite handcrafted pendant featuring a large natural amber
+                stone set in an ornate bronze frame inspired by the Baroque era.
+                The warm hues of genuine amber create a captivating play of
+                light, emphasizing the uniqueness of each piece. The bronze
+                chain complements the vintage design, adding an authentic
+                antique charm.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* full description tablet */}
+      <div className="xs:hidden mt-[74px] md:hidden">
+        <ul className="flex flex-col">
+          <li className="flex ">
+            <p>Pendant size:</p>
+            <p>approximately 5 cm x 3 cm</p>
+          </li>
+          <li className="flex ">
+            <p>Chain length:</p>
+            <p> 50 cm</p>
+          </li>
+          <li className="flex ">
+            <p>Technique:</p>
+            <p>Hand-casting and engraving</p>
+          </li>
+          <li className="flex ">
+            <p>Style:</p>
+            <p>Vintage, Baroque</p>
+          </li>
+          <li>
+            <p>Features:</p>
+            <p>✓ Handmade</p>
+            <p>✓ Unique amber patterns</p>
+            <p>✓ Perfect gift for lovers of classic beauty</p>
+          </li>
+        </ul>
+        <p className="mt-6">
+          Exquisite handcrafted pendant featuring a large natural amber stone
+          set in an ornate bronze frame inspired by the Baroque era. The warm
+          hues of genuine amber create a captivating play of light, emphasizing
+          the uniqueness of each piece. The bronze chain complements the vintage
+          design, adding an authentic antique charm.
+        </p>
+      </div>
+
+      {/* full description */}
+      <div className="leading-6 md:hidden">
+        <ul className="flex flex-col">
+          <li className="flex ">
+            <p>Pendant size:</p>
+            <p>approximately 5 cm x 3 cm</p>
+          </li>
+          <li className="flex ">
+            <p>Chain length:</p>
+            <p> 50 cm</p>
+          </li>
+          <li className="flex ">
+            <p>Technique:</p> <p>Hand-casting and engraving</p>
+          </li>
+          <li className="flex ">
+            <p>Style:</p>
+            <p>Vintage, Baroque</p>
+          </li>
+          <li>
+            <p>Features:</p>
+            <p>✓ Handmade</p>
+            <p>✓ Unique amber patterns</p>
+            <p>✓ Perfect gift for lovers of classic beauty</p>
+          </li>
+        </ul>
+        <p className="mt-6">
+          Exquisite handcrafted pendant featuring a large natural amber stone
+          set in an ornate bronze frame inspired by the Baroque era. The warm
+          hues of genuine amber create a captivating play of light, emphasizing
+          the uniqueness of each piece. The bronze chain complements the vintage
+          design, adding an authentic antique charm.
+        </p>
+      </div>
+      {/* Bestsellers part */}
+      <div className=" mb-[30px] sm:my-[80px] md:my-[65px]">
+        <h3 className="text-[23px] font-bold text-primary500 mb-5">
+          Bestseller
+        </h3>
+        <div className="flex gap-[10px]">
+          <ProductItem oldPrice={true} />
+          <ProductItem oldPrice={true} />
         </div>
       </div>
     </section>
