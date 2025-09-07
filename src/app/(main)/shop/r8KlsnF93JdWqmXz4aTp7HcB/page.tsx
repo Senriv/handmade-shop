@@ -1,9 +1,9 @@
 "use client";
-import { useRouter } from "next/navigation";
 
 import Image from "next/image";
 
 import { useCounter } from "@/hooks/productItem/PurchasesQuantety";
+import { useBack } from "@/hooks/reusableUIthings/useBackButton";
 
 import SlideControl from "@/components/base/SlideControl";
 
@@ -17,26 +17,17 @@ import ProductItem from "@/components/shop/ProductListWithFilter/ProductItem";
 
 const ProductCard = () => {
   // for navigation
-  const router = useRouter();
+  const back = useBack("/shop");
 
   // purchases counter
   const { value: items, increment, decrement } = useCounter(0);
-
-  // return to the previous page
-  const handlePageBack = () => {
-    if (window.history.length > 1) {
-      router.back();
-    } else {
-      router.push("/");
-    }
-  };
 
   return (
     <section className="mt-5 sm:mt-[38px] ">
       {/* button back */}
       <button
         type="button"
-        onClick={handlePageBack}
+        onClick={back}
         className="flex gap-[6px] items-center text-[15px] text-primary500 mb-[30px] md:mb-[34px]"
       >
         <ArrowBackSVG /> Back

@@ -3,7 +3,7 @@ import PaletteSelector from "@/components/base/palette/PaletteSelector";
 import AddToCartButton from "./AddToCartButton";
 import ProductBadge from "../ProductBadge";
 
-import { useHover } from "@/hooks/useHover";
+import { useHover } from "@/hooks/reusableUIthings/useHover";
 
 type ProductItemProps = {
   selectedCategory?: string;

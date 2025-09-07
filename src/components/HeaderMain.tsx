@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { useClickOutside } from "@/hooks/clickOutside";
+import { useClickOutside } from "@/hooks/reusableUIthings/clickOutside";
 
 import { Container } from "@/components/Container";
 import { BurgerSvg } from "./base/BurgerSvg";
