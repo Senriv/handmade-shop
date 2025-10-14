@@ -47,6 +47,25 @@ export default function ShopPage() {
     setHeroSlides(simulatedSlides);
   }, []);
 
+  // // sdfghj
+  // useEffect(() => {
+  //   async function getData() {
+  //     const url = "https://rotry.xyz:9090/api/v1/products";
+  //     try {
+  //       const response = await fetch(url);
+  //       if (!response.ok) {
+  //         throw new Error(`Response status: ${response.status}`);
+  //       }
+
+  //       const result = await response.json();
+  //       console.log(result);
+  //     } catch (error: any) {
+  //       console.error(error.message);
+  //     }
+  //   }
+  //   getData();
+  // }, []);
+
   return (
     <>
       <HeroSlider slides={heroSlides} />
