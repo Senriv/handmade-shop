@@ -4,6 +4,7 @@ import createWebStorage from "redux-persist/lib/storage/createWebStorage";
 import { persistReducer, persistStore } from "redux-persist";
 import { apiSlice } from "./api/apiSlice";
 import authReducer from "./auth/authSlice";
+import { apiRequests } from "./api/apiRequests";
 
 const createNoopStorage = () => ({
   getItem() {
@@ -31,6 +32,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   auth: authReducer,
   [apiSlice.reducerPath]: apiSlice.reducer,
+  [apiRequests.reducerPath]: apiRequests.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -40,7 +42,9 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }).concat(apiSlice.middleware),
+    })
+      .concat(apiSlice.middleware)
+      .concat(apiRequests.middleware),
 });
 
 export const persistor = persistStore(store);

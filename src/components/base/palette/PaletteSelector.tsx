@@ -3,23 +3,14 @@ import CircleIcon from "./CircleIcon";
 
 interface PaletteSelectorProps {
   isHovered: boolean;
+  colors?: Record<string, string> | string[];
 }
 
-const PaletteSelector = ({ isHovered }: PaletteSelectorProps) => {
-  const [selectedColor, setSelectedColor] = useState("#FF6B6B");
+const PaletteSelector = ({ isHovered, colors }: PaletteSelectorProps) => {
+  const paletteItems = colors ? Object.values(colors).map((c) => `#${c}`) : [];
 
-  const paletteItems = [
-    "#FF6B6B",
-    "#4ECDC4",
-    "#556270",
-    "#C7F464",
-    "#FFCC5C",
-    "#6B5B95",
-    "#88D8B0",
-    "#FFB347",
-    "#92A8D1",
-    "#F67280",
-  ];
+  const [selectedColor, setSelectedColor] = useState(paletteItems[0]);
+  if (paletteItems.length === 0) return null;
 
   const displayedPalette = isHovered ? paletteItems : paletteItems.slice(0, 2);
 

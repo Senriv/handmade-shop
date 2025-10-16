@@ -6,6 +6,17 @@ const withImages = require("next-images");
 const nextConfig: NextConfig = withImages({
   reactStrictMode: true,
 
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "rotry.xyz",
+        port: "8334",
+        pathname: "/images/**", // сузил до твоего пути
+      },
+    ],
+  },
+
   async redirects() {
     return [
       {
