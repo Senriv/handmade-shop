@@ -13,7 +13,7 @@ const Pagination: React.FC<PaginationProps> = ({
   totalPages,
   onChange,
   disabled,
-  windowSize = 2,
+  windowSize = 1,
 }) => {
   if (!Number.isFinite(totalPages) || totalPages <= 1) return null;
 
