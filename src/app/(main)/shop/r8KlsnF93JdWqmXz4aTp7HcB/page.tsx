@@ -13,8 +13,6 @@ import ZoomSVG from "@/assets/main/default/zoom_product_card.svg";
 import MinusSVG from "@/assets/ProductCard/minus.svg";
 import PlusSVG from "@/assets/ProductCard/plus.svg";
 
-import ProductItem from "@/components/shop/ProductListWithFilter/ProductItem";
-
 const ProductCard = () => {
   // for navigation
   const back = useBack("/shop");
@@ -325,10 +323,7 @@ const ProductCard = () => {
         <h3 className="text-[23px] font-bold text-primary500 mb-5">
           Bestseller
         </h3>
-        <div className="flex gap-[10px]">
-          <ProductItem oldPrice={true} />
-          <ProductItem oldPrice={true} />
-        </div>
+        <div className="flex gap-[10px]"></div>
       </div>
     </section>
   );

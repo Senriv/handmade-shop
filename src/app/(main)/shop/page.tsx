@@ -4,7 +4,9 @@ import Link from "next/link";
 import HeroSlider, { HeroSlide } from "@/components/shop/HeroSlider";
 import FilterSection from "@/components/shop/ProductListWithFilter/FilterSection";
 import ProductListSection from "@/components/shop/ProductListWithFilter/ProductListSection";
+import Pagination from "@/components/shop/Pagination";
 
+import { useGetAllProductsQuery } from "@/redux/api/apiRequests";
 import { useSortReducer } from "@/hooks/productListWithFilter/useSortReducer";
 
 export default function ShopPage() {
@@ -14,6 +16,20 @@ export default function ShopPage() {
   const productCategories = ["All", "Sale", "Bestseller"];
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [sortOrder, dispatchSortOrder] = useSortReducer();
+
+  // pagination
+  const [page, setPage] = useState(0);
+
+  const pageSize = 12;
+
+  const { data: getAllGoods, isLoading } = useGetAllProductsQuery({
+    page,
+    size: pageSize,
+  });
+
+  const totalPages = getAllGoods?.totalPages ?? 0;
+
+  const products = getAllGoods?.content ?? [];
 
   useEffect(() => {
     const simulatedSlides: HeroSlide[] = [
@@ -47,37 +63,23 @@ export default function ShopPage() {
     setHeroSlides(simulatedSlides);
   }, []);
 
-  // // sdfghj
-  // useEffect(() => {
-  //   async function getData() {
-  //     const url = "https://rotry.xyz:9090/api/v1/products";
-  //     try {
-  //       const response = await fetch(url);
-  //       if (!response.ok) {
-  //         throw new Error(`Response status: ${response.status}`);
-  //       }
-
-  //       const result = await response.json();
-  //       console.log(result);
-  //     } catch (error: any) {
-  //       console.error(error.message);
-  //     }
-  //   }
-  //   getData();
-  // }, []);
-
   return (
     <>
       <HeroSlider slides={heroSlides} />
       <section className="flex flex-col gap-[14px] sm:gap-[65px] sm:flex-row">
         <FilterSection className="h-7 sm:w-[263px] flex-shrink-0" />
-        <ProductListSection
-          productCategories={productCategories}
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-          sortOrder={sortOrder}
-          dispatchSortOrder={dispatchSortOrder}
-        />
+        <div className="flex flex-col gap-4 sm:gap-11 md:gap-[50px] ">
+          <ProductListSection
+            productCategories={productCategories}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+            sortOrder={sortOrder}
+            dispatchSortOrder={dispatchSortOrder}
+            data={products}
+            isLoading={isLoading}
+          />
+          <Pagination page={page} totalPages={totalPages} onChange={setPage} />
+        </div>
       </section>
       <Link href="/shop/r8KlsnF93JdWqmXz4aTp7HcB">
         <div className="p-3 hover:bg-textSecondary ">
