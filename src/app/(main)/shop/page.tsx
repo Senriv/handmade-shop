@@ -21,7 +21,7 @@ export default function ShopPage() {
   const [page, setPage] = useState(0);
 
   const pageSize = 12;
-
+  
   const { data: getAllGoods } = useGetAllProductsQuery({
     page,
     size: pageSize,
