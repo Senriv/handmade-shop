@@ -13,8 +13,6 @@ import ZoomSVG from "@/assets/main/default/zoom_product_card.svg";
 import MinusSVG from "@/assets/ProductCard/minus.svg";
 import PlusSVG from "@/assets/ProductCard/plus.svg";
 
-import ProductItem from "@/components/shop/ProductListWithFilter/ProductItem";
-
 const ProductCard = () => {
   // for navigation
   const back = useBack("/shop");

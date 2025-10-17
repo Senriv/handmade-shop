@@ -80,7 +80,6 @@ export default function ShopPage() {
             dispatchSortOrder={dispatchSortOrder}
             data={products}
             isLoading={isLoading}
-            error={error as any}
           />
           <Pagination page={page} totalPages={totalPages} onChange={setPage} />
         </div>
