@@ -19,7 +19,8 @@ export default function ShopPage() {
 
   // pagination
   const [page, setPage] = useState(0);
-  const [pageSize] = useState(12);
+
+  const pageSize = 12;
 
   const { data: getAllGoods, isLoading } = useGetAllProductsQuery({
     page,
