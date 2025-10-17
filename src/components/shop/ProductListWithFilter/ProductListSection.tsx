@@ -16,8 +16,6 @@ interface ProductListSectionProps {
     { type: "TOGGLE_ASC" } | { type: "TOGGLE_DESC" }
   >;
   data: Product[];
-  isLoading?: boolean;
-  error?: unknown;
 }
 
 const ProductListSection = ({
@@ -27,8 +25,6 @@ const ProductListSection = ({
   dispatchSortOrder,
   sortOrder,
   data,
-  error,
-  isLoading,
 }: ProductListSectionProps) => {
   return (
     <section>

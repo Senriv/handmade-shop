@@ -21,8 +21,8 @@ export default function ShopPage() {
   const [page, setPage] = useState(0);
 
   const pageSize = 12;
-
-  const { data: getAllGoods, isLoading } = useGetAllProductsQuery({
+  
+  const { data: getAllGoods } = useGetAllProductsQuery({
     page,
     size: pageSize,
   });
@@ -76,7 +76,6 @@ export default function ShopPage() {
             sortOrder={sortOrder}
             dispatchSortOrder={dispatchSortOrder}
             data={products}
-            isLoading={isLoading}
           />
           <Pagination page={page} totalPages={totalPages} onChange={setPage} />
         </div>
