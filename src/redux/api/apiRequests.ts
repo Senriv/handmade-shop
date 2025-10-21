@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import BanerProps from "@/types/baner.types";
 
 export interface Product {
   productId: number;
@@ -43,7 +44,11 @@ export const apiRequests = createApi({
         `/api/v1/products?page=${page}&size=${size}`,
       keepUnusedDataFor: 60,
     }),
+    getBaner: build.query<BanerProps[], void>({
+      query: () => "/api/images/baner",
+      keepUnusedDataFor: 60,
+    }),
   }),
 });
 
-export const { useGetAllProductsQuery } = apiRequests;
+export const { useGetAllProductsQuery, useGetBanerQuery } = apiRequests;
