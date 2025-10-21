@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import HeroSlider from "@/components/shop/HeroSlider";
 import HeroSliderSkeleton from "@/components/shop/skeletons/HeroSliderSkeleton";
