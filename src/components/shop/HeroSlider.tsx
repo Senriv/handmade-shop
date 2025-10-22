@@ -41,7 +41,7 @@ function HeroSlider({ slides }: HeroSliderProps) {
                   alt="baner"
                   fill
                   priority={false}
-                  className="object-cover cursor-pointer"
+                  className="object-center cursor-pointer"
                 />
               </Link>
             </div>
