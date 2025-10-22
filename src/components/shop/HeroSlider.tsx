@@ -42,6 +42,7 @@ function HeroSlider({ slides }: HeroSliderProps) {
                   fill
                   priority={false}
                   className="object-center cursor-pointer"
+
                 />
               </Link>
             </div>
