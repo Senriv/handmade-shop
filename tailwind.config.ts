@@ -27,6 +27,7 @@ const config: Config = {
         lightGray: "#acacac",
         labelSale: "#ce373a",
         accentBg: "rgba(55, 206, 206, 0.1)",
+        oldPrice: "rgba(0,0,0,0.21)",
       },
     },
     screens: {
