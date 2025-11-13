@@ -6,11 +6,12 @@ import FilterDownSVG from "@/assets/main/catalog/filter_to_low.svg";
 import FilterUpSVG from "@/assets/main/catalog/filter_to_high.svg";
 
 import type { Product } from "@/redux/api/apiRequests";
+import type { Category } from "@/types/categories.types";
 
 interface ProductListSectionProps {
-  productCategories: string[];
-  selectedCategory: string;
-  setSelectedCategory: (category: string) => void;
+  productCategories: Category[];
+  selectedCategory: Category;
+  setSelectedCategory: React.Dispatch<React.SetStateAction<Category>>;
   sortOrder: "asc" | "desc" | null;
   dispatchSortOrder: React.Dispatch<
     { type: "TOGGLE_ASC" } | { type: "TOGGLE_DESC" }
@@ -27,7 +28,7 @@ const ProductListSection = ({
   data,
 }: ProductListSectionProps) => {
   return (
-    <section>
+    <section className="mb-4 sm:mb-11 md:mb-[50px]">
       {/* categories + fliter svgs */}
       <div className="flex flex-row items-center justify-between mb-[14px]">
         {/* categories */}
@@ -81,9 +82,15 @@ const ProductListSection = ({
         </ul>
       </div>
       {/* product list */}
-      <ul className="flex flex-wrap gap-x-3 gap-y-[6px] sm:gap-y-[15px]">
+      <ul className="flex flex-wrap gap-x-3 gap-y-[35px] sm:gap-x-5  md:sm:gap-x-[38px]">
         {data &&
-          data.map((item) => <ProductItem key={item.productId} item={item} />)}
+          data.map((item) => (
+            <ProductItem
+              key={item.productId}
+              item={item}
+              selectedCategory={selectedCategory}
+            />
+          ))}
       </ul>
     </section>
   );

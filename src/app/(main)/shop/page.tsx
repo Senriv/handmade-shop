@@ -1,6 +1,5 @@
 "use client";
-import { useState } from "react";
-import Link from "next/link";
+import { useState, useEffect, useMemo } from "react";
 import HeroSlider from "@/components/shop/HeroSlider";
 import HeroSliderSkeleton from "@/components/shop/skeletons/HeroSliderSkeleton";
 import FilterSection from "@/components/shop/ProductListWithFilter/FilterSection";
@@ -13,11 +12,29 @@ import {
 } from "@/redux/api/apiRequests";
 import { useSortReducer } from "@/hooks/productListWithFilter/useSortReducer";
 
-export default function ShopPage() {
+import type { Category } from "@/types/categories.types";
+
+const ShopPage = () => {
   // product list
-  const productCategories = ["All", "Sale", "Bestseller"];
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const productCategories: Category[] = ["All", "Sale", "Bestseller"];
+  const [selectedCategory, setSelectedCategory] = useState<Category>("All");
   const [sortOrder, dispatchSortOrder] = useSortReducer();
+
+  // logic for asc and desc price
+  const sortPriceAsc =
+    sortOrder === "asc" ? true : sortOrder === "desc" ? false : undefined;
+
+  // logic for categories
+  const { onSale, bestseller } = useMemo(() => {
+    switch (selectedCategory) {
+      case "Sale":
+        return { onSale: true, bestseller: undefined };
+      case "Bestseller":
+        return { onSale: undefined, bestseller: true };
+      default:
+        return { onSale: undefined, bestseller: undefined };
+    }
+  }, [selectedCategory]);
 
   // pagination
   const [page, setPage] = useState(0);
@@ -27,6 +44,9 @@ export default function ShopPage() {
   const { data: getAllGoods } = useGetAllProductsQuery({
     page,
     size: pageSize,
+    sortPriceAsc,
+    onSale,
+    bestseller,
   });
 
   const totalPages = getAllGoods?.totalPages ?? 0;
@@ -40,6 +60,11 @@ export default function ShopPage() {
     isLoading: banerLoading,
   } = useGetBanerQuery();
 
+  // set 1st page if something was changed
+  useEffect(() => {
+    setPage(0);
+  }, [sortOrder, selectedCategory]);
+
   return (
     <>
       {banerLoading && <HeroSliderSkeleton />}
@@ -48,7 +73,7 @@ export default function ShopPage() {
 
       <section className="flex flex-col gap-[14px] sm:gap-[65px] sm:flex-row">
         <FilterSection className="h-7 sm:w-[263px] flex-shrink-0" />
-        <div className="flex flex-col gap-4 sm:gap-11 md:gap-[50px] ">
+        <div className="flex flex-col  ">
           <ProductListSection
             productCategories={productCategories}
             selectedCategory={selectedCategory}
@@ -60,11 +85,8 @@ export default function ShopPage() {
           <Pagination page={page} totalPages={totalPages} onChange={setPage} />
         </div>
       </section>
-      <Link href="/shop/r8KlsnF93JdWqmXz4aTp7HcB">
-        <div className="p-3 hover:bg-textSecondary ">
-          Click me and You&apos;ll see the magic
-        </div>
-      </Link>
     </>
   );
-}
+};
+
+export default ShopPage;

@@ -6,10 +6,11 @@ import ProductBadge from "../ProductBadge";
 import { useHover } from "@/hooks/reusableUIthings/useHover";
 
 import type { Product } from "@/redux/api/apiRequests";
+import type { Category } from "@/types/categories.types";
 
 type ProductItemProps = {
   item: Product;
-  selectedCategory?: string;
+  selectedCategory: Category;
 };
 
 const ProductItem = ({
@@ -19,12 +20,18 @@ const ProductItem = ({
 }: ProductItemProps) => {
   const [hoverRef, isHovered] = useHover<HTMLLIElement>();
   const { productName, sendingDataShort } = item;
+
+  const isBestseller =
+    selectedCategory === "Bestseller" || sendingDataShort.bestseller === true;
+
+  const isOnSale =
+    selectedCategory === "Sale" ||
+    (sendingDataShort.discountPrice !== null &&
+      sendingDataShort.price > sendingDataShort.discountPrice);
+
   return (
-    <li
-      ref={hoverRef}
-      className=" w-[173px] h-[208px] flex flex-col sm:w-[292px] sm:h-[351px] md:w-[295px] md:h-[355px]"
-    >
-      <div className="relative aspect-[1/1] w-[167px] h-[167px] sm:w-[282px] sm:h-[282px] md:w-[285px] md:h-[285px] my-[6px] mx-[3px] sm:my-[10px] sm:mx-[5px]">
+    <li ref={hoverRef} className="  flex flex-col ">
+      <div className="relative aspect-[1/1] w-[167px] h-[167px] sm:w-[307px] sm:h-[307px] md:w-[285px] md:h-[285px] mb-2 sm:mb-[14px]">
         <Image
           src={
             item.sendingDataShort.imageUrl || "/images/default/Item_plug.jpg"
@@ -36,14 +43,9 @@ const ProductItem = ({
           {isHovered && <AddToCartButton />}
         </div>
 
-        <div className="absolute top-[17px] right-[6px]">
-          {selectedCategory === "Sale" && (
-            <ProductBadge text="Sale" bgColor="bg-labelSale" />
-          )}
-        </div>
-
-        <div className="absolute top-[17px] right-[6px]">
-          {selectedCategory === "Bestseller" && (
+        <div className="absolute top-[17px] right-[6px] flex flex-col gap-1 items-end">
+          {isOnSale && <ProductBadge text="Sale" bgColor="bg-labelSale" />}
+          {isBestseller && (
             <ProductBadge text="Bestseller" bgColor="bg-primary500" />
           )}
         </div>
@@ -54,9 +56,18 @@ const ProductItem = ({
             {productName}
           </p>
           <div className="flex gap-[18px]">
-            <p className="text-[9px] sm:text-[15px] md:text-[16px] font-semibold">
-              ${sendingDataShort.price}
-            </p>
+            {isOnSale ? (
+              <div className="flex gap-3 text-[9px] sm:text-[15px] md:text-[16px] font-semibold">
+                <p className="">${sendingDataShort.discountPrice}</p>
+                <p className="line-through decoration-oldPrice text-oldPrice">
+                  ${sendingDataShort.price}
+                </p>
+              </div>
+            ) : (
+              <p className="text-[9px] sm:text-[15px] md:text-[16px] font-semibold">
+                ${sendingDataShort.price}
+              </p>
+            )}
           </div>
         </div>
         <div className="flex items-end">
