@@ -14,7 +14,7 @@ import { useSortReducer } from "@/hooks/productListWithFilter/useSortReducer";
 
 import type { Category } from "@/types/categories.types";
 
-export function ShopPage() {
+const ShopPage = () => {
   // product list
   const productCategories: Category[] = ["All", "Sale", "Bestseller"];
   const [selectedCategory, setSelectedCategory] = useState<Category>("All");
@@ -87,6 +87,6 @@ export function ShopPage() {
       </section>
     </>
   );
-}
+};
 
 export default ShopPage;
