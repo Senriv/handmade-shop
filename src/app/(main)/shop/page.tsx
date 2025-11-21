@@ -31,7 +31,7 @@ const ShopPage = () => {
         return { onSale: true, bestseller: undefined };
       case "Bestseller":
         return { onSale: undefined, bestseller: true };
-      default:
+      case "All":
         return { onSale: undefined, bestseller: undefined };
     }
   }, [selectedCategory]);

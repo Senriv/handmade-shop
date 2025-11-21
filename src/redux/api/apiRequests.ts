@@ -1,5 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import BanerProps from "@/types/baner.types";
+import {
+  ProductCardDTO,
+  ProductCardUi,
+  mapProductDtoToUi,
+} from "@/types/productCard.types";
 
 export interface Product {
   productId: number;
@@ -59,9 +64,16 @@ export const apiRequests = createApi({
       query: () => "/api/images/baner",
       keepUnusedDataFor: 60,
     }),
+    getProductById: build.query<ProductCardUi, number | string>({
+      query: (id) => `/api/v1/product?id=${id}`,
+      transformResponse: (response: ProductCardDTO) =>
+        mapProductDtoToUi(response),
+    }),
   }),
 });
 
-export const { useGetAllProductsQuery, useGetBanerQuery } = apiRequests;
-
-// onSale зависит от discountPrice если есть то это распродажа если нет то обычный товар
+export const {
+  useGetAllProductsQuery,
+  useGetBanerQuery,
+  useGetProductByIdQuery,
+} = apiRequests;
