@@ -83,7 +83,7 @@ const ProductCard = () => {
 
         <div className="relative  w-[358px]  h-[358px]  sm:min-w-[430px] sm:max-w-[630px] sm:min-h-[430px] sm:max-h-[630px]  rounded-lg overflow-hidden  mb-[22px] aspect-square md:w-[630px] md:h-[630px]">
           <Image
-            src={image || "/images/default/Item_plug.jpg"}
+            src={image[0] || "/images/default/Item_plug.jpg"}
             alt={title}
             fill
             className="object-cover"
