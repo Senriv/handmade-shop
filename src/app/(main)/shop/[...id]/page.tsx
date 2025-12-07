@@ -1,9 +1,17 @@
 "use client";
 
+import { useParams } from "next/navigation";
+
 import Image from "next/image";
 
 import { useCounter } from "@/hooks/productItem/PurchasesQuantety";
 import { useBack } from "@/hooks/reusableUIthings/useBackButton";
+import {
+  useGetProductByIdQuery,
+  useGetAllProductsQuery,
+} from "@/redux/api/apiRequests";
+
+import ProductItem from "@/components/shop/ProductListWithFilter/ProductItem";
 
 import SlideControl from "@/components/base/SlideControl";
 
@@ -20,6 +28,46 @@ const ProductCard = () => {
   // purchases counter
   const { value: items, increment, decrement } = useCounter(0);
 
+  // get id from url
+  const { id } = useParams<{ id: string }>();
+  const numericId = Number(id);
+
+  // get info by id
+  const { data, isLoading, isError } = useGetProductByIdQuery(numericId);
+
+  console.log(data);
+
+  const { data: Bestsellers } = useGetAllProductsQuery({
+    bestseller: true,
+    page: 0,
+    size: 4,
+  });
+
+  const bestsellers = Bestsellers?.content ?? [];
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError || !data) {
+    return <div>Something went wrong</div>;
+  }
+
+  const {
+    title,
+    shortDescription,
+    description,
+    price,
+    // discountPrice,
+    category,
+    image,
+    materials,
+    attributes,
+  } = data;
+
+  const technique = attributes.find((item) => item.name === "Technique")?.value;
+  const style = attributes.find((item) => item.name === "Style")?.value;
+
   return (
     <section className="mt-5 sm:mt-[38px] ">
       {/* button back */}
@@ -33,16 +81,16 @@ const ProductCard = () => {
       <div className="flex flex-col sm:flex-row sm:gap-[60px] md:gap-[43px]">
         {/* main iamge */}
 
-        <div className="relative  min-w-[358px] max-w-[430px] min-h-[358px] max-h-[430px] sm:min-w-[430px] sm:max-w-[630px] sm:min-h-[430px] sm:max-h-[630px]  rounded-lg overflow-hidden  mb-[22px] aspect-square md:w-[630px] md:h-[630px]">
+        <div className="relative  w-[358px]  h-[358px]  sm:min-w-[430px] sm:max-w-[630px] sm:min-h-[430px] sm:max-h-[630px]  rounded-lg overflow-hidden  mb-[22px] aspect-square md:w-[630px] md:h-[630px]">
           <Image
-            src="/images/default/Item_plug.jpg"
-            alt="item image"
+            src={image[0] || "/images/default/Item_plug.jpg"}
+            alt={title}
             fill
             className="object-cover"
           />
           <button
             type="button"
-            className="p-1 absolute top-[15px] right-[15px] hidden"
+            className="p-1 absolute top-[15px] right-[15px] hidden md:block"
           >
             <ZoomSVG />
           </button>
@@ -52,10 +100,10 @@ const ProductCard = () => {
         {/* description */}
         <div className="flex-1">
           <h1 className="text-[20px] font-bold leading-[18px] mb-5 sm:text-[28px] sm:leading-[24px] sm:mb-[30px]">
-            Vintage Bronze Pendant with Amber
+            {title}
           </h1>
           <h2 className="text-[17px] font-bold leading-[16px] mb-3 sm:text-[22px] sm:leading-[18px]">
-            $129.00
+            $ {price}
           </h2>
           <span className="flex h-[1px] w-full bg-primary500"></span>
           {/* short descr */}
@@ -64,8 +112,7 @@ const ProductCard = () => {
               Short Description:
             </p>
             <p className="text-[14px] leading-[24px] xs:w-[258px] sm:w-[315px] md:w-[403px]">
-              Exquisite handcrafted pendant featuring a large natural amber
-              stone set in an ornate bronze frame inspired by the Baroque era.
+              {shortDescription}
             </p>
           </div>
           <div className="flex flex-row gap-[30px] justify-end mb-5 md:hidden">
@@ -102,11 +149,16 @@ const ProductCard = () => {
             <ul className="flex flex-col gap-3">
               <li className="flex gap-1">
                 <p className="text-lightGray text-[15px]">Categories: </p>
-                <p className="text-[15px]">Jewelry</p>
+                <p className="text-[15px]">{category}</p>
               </li>
               <li className="flex gap-1">
                 <p className="text-lightGray text-[15px]">Material: </p>
-                <p className="text-[15px]">Metal</p>
+                {materials &&
+                  materials.map((item, index) => (
+                    <p className="text-[15px]" key={index}>
+                      {item}
+                    </p>
+                  ))}
               </li>
               <li className="flex gap-1">
                 <p className="text-lightGray text-[15px]">Size: </p>
@@ -136,7 +188,7 @@ const ProductCard = () => {
               </li>
               <li className="flex ">
                 <p>Style:</p>
-                <p>Vintage, Baroque</p>
+                <p>{style}</p>
               </li>
               <li>
                 <p>Features:</p>
@@ -145,13 +197,7 @@ const ProductCard = () => {
                 <p>✓ Perfect gift for lovers of classic beauty</p>
               </li>
             </ul>
-            <p className="mt-6">
-              Exquisite handcrafted pendant featuring a large natural amber
-              stone set in an ornate bronze frame inspired by the Baroque era.
-              The warm hues of genuine amber create a captivating play of light,
-              emphasizing the uniqueness of each piece. The bronze chain
-              complements the vintage design, adding an authentic antique charm.
-            </p>
+            <p className="mt-6">{description}</p>
           </div>
           {/* desctop description */}
           <div className="md:flex flex-col hidden">
@@ -161,11 +207,16 @@ const ProductCard = () => {
                 <ul className="flex flex-col gap-4">
                   <li className="flex">
                     <p>Categories: </p>
-                    <p>Jewelry</p>
+                    <p>{category}</p>
                   </li>
                   <li className="flex">
                     <p>Material: </p>
-                    <p>Metal</p>
+                    {materials &&
+                      materials.map((item, index) => (
+                        <p className="text-[15px]" key={index}>
+                          {item}
+                        </p>
+                      ))}
                   </li>
                   <li className="flex">
                     <p>Size: </p>
@@ -225,11 +276,11 @@ const ProductCard = () => {
                 </li>
                 <li className="flex ">
                   <p>Technique:</p>
-                  <p>Hand-casting and engraving</p>
+                  <p>{technique}</p>
                 </li>
                 <li className="flex ">
                   <p>Style:</p>
-                  <p>Vintage, Baroque</p>
+                  <p>{style}</p>
                 </li>
                 <li>
                   <p>Features:</p>
@@ -238,14 +289,7 @@ const ProductCard = () => {
                   <p>✓ Perfect gift for lovers of classic beauty</p>
                 </li>
               </ul>
-              <p className="mt-6">
-                Exquisite handcrafted pendant featuring a large natural amber
-                stone set in an ornate bronze frame inspired by the Baroque era.
-                The warm hues of genuine amber create a captivating play of
-                light, emphasizing the uniqueness of each piece. The bronze
-                chain complements the vintage design, adding an authentic
-                antique charm.
-              </p>
+              <p className="mt-6">{description}</p>
             </div>
           </div>
         </div>
@@ -263,11 +307,11 @@ const ProductCard = () => {
           </li>
           <li className="flex ">
             <p>Technique:</p>
-            <p>Hand-casting and engraving</p>
+            <p>{technique}</p>
           </li>
           <li className="flex ">
             <p>Style:</p>
-            <p>Vintage, Baroque</p>
+            <p>{style}</p>
           </li>
           <li>
             <p>Features:</p>
@@ -276,13 +320,7 @@ const ProductCard = () => {
             <p>✓ Perfect gift for lovers of classic beauty</p>
           </li>
         </ul>
-        <p className="mt-6">
-          Exquisite handcrafted pendant featuring a large natural amber stone
-          set in an ornate bronze frame inspired by the Baroque era. The warm
-          hues of genuine amber create a captivating play of light, emphasizing
-          the uniqueness of each piece. The bronze chain complements the vintage
-          design, adding an authentic antique charm.
-        </p>
+        <p className="mt-6">{description}</p>
       </div>
 
       {/* full description */}
@@ -297,11 +335,11 @@ const ProductCard = () => {
             <p> 50 cm</p>
           </li>
           <li className="flex ">
-            <p>Technique:</p> <p>Hand-casting and engraving</p>
+            <p>Technique:</p> <p>{technique}</p>
           </li>
           <li className="flex ">
             <p>Style:</p>
-            <p>Vintage, Baroque</p>
+            <p>{style}</p>
           </li>
           <li>
             <p>Features:</p>
@@ -310,20 +348,25 @@ const ProductCard = () => {
             <p>✓ Perfect gift for lovers of classic beauty</p>
           </li>
         </ul>
-        <p className="mt-6">
-          Exquisite handcrafted pendant featuring a large natural amber stone
-          set in an ornate bronze frame inspired by the Baroque era. The warm
-          hues of genuine amber create a captivating play of light, emphasizing
-          the uniqueness of each piece. The bronze chain complements the vintage
-          design, adding an authentic antique charm.
-        </p>
+        <p className="mt-6">{description}</p>
       </div>
       {/* Bestsellers part */}
       <div className=" mb-[30px] sm:my-[80px] md:my-[65px]">
         <h3 className="text-[23px] font-bold text-primary500 mb-5">
           Bestseller
         </h3>
-        <div className="flex gap-[10px]"></div>
+        <div className="flex gap-[10px]">
+          <ul className="flex flex-wrap gap-x-3 gap-y-[35px] sm:gap-x-5  md:sm:gap-x-[38px]">
+            {bestsellers &&
+              bestsellers.map((item) => (
+                <ProductItem
+                  key={item.productId}
+                  item={item}
+                  selectedCategory={"Bestseller"}
+                />
+              ))}
+          </ul>
+        </div>
       </div>
     </section>
   );
